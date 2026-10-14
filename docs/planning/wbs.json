@@ -1,0 +1,727 @@
+{
+  "developers": 3,
+  "days": 12,
+  "total_pd": 36,
+  "items": [
+    {
+      "day": 1,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-01",
+      "title": "외장 IMU·보드 사양과 배선 확정",
+      "evidence": "부품표·핀맵",
+      "dependency": "없음"
+    },
+    {
+      "day": 1,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "PR-01",
+      "title": "공통 패킷·역할 계약 검토",
+      "evidence": "v1 계약 검토 기록",
+      "dependency": "C D1 초안"
+    },
+    {
+      "day": 1,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-01",
+      "title": "Unity 버전·Windows 빌드 확인",
+      "evidence": "빈 실행 파일",
+      "dependency": "없음"
+    },
+    {
+      "day": 1,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-01",
+      "title": "코트·공·플레이어 좌표 배치",
+      "evidence": "테스트 씬",
+      "dependency": "B D1 빌드"
+    },
+    {
+      "day": 1,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "DC-01",
+      "title": "저장소·문서 읽기와 환경표",
+      "evidence": "환경표·README",
+      "dependency": "없음"
+    },
+    {
+      "day": 1,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "PR-01",
+      "title": "패킷 표와 정상 벡터 정리",
+      "evidence": "계약 초안·벡터",
+      "dependency": "A D1 합의"
+    },
+    {
+      "day": 2,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-02",
+      "title": "외장 센서 ID·통신 검증",
+      "evidence": "실기 ID 로그",
+      "dependency": "FW-01"
+    },
+    {
+      "day": 2,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "FW-02",
+      "title": "100Hz 샘플·단위 변환",
+      "evidence": "6축 샘플 로그",
+      "dependency": "A D2 ID"
+    },
+    {
+      "day": 2,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-02",
+      "title": "공 물리·바운스기초",
+      "evidence": "바운스 씬",
+      "dependency": "GM-01"
+    },
+    {
+      "day": 2,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-03",
+      "title": "서브 상태와 가상 입력",
+      "evidence": "서브 시연",
+      "dependency": "GM-01"
+    },
+    {
+      "day": 2,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "BL-01",
+      "title": "가상 입력과 표준 인터페이스",
+      "evidence": "가상 입력 출력",
+      "dependency": "PR-01"
+    },
+    {
+      "day": 2,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "BL-02",
+      "title": "Windows standalone BLE 후보 검증",
+      "evidence": "Notify 수신 로그 또는 이슈",
+      "dependency": "FW-01, A 지원"
+    },
+    {
+      "day": 3,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-03",
+      "title": "좌표 변환·정지 보정",
+      "evidence": "보정·변환 예제",
+      "dependency": "FW-02"
+    },
+    {
+      "day": 3,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "BL-02",
+      "title": "BLE·P2P 위험 검토와 C 지원",
+      "evidence": "채택 후보·환경 기록",
+      "dependency": "C D2 결과, C D3 spike"
+    },
+    {
+      "day": 3,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-02",
+      "title": "공 충돌·경계 판정",
+      "evidence": "첫/두 번째 바운스 테스트",
+      "dependency": "GM-02"
+    },
+    {
+      "day": 3,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-04",
+      "title": "점수·듀스 순수 함수",
+      "evidence": "점수 사례 출력",
+      "dependency": "없음"
+    },
+    {
+      "day": 3,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "PR-02",
+      "title": "C# 코덱과 오류 검증",
+      "evidence": "벡터 테스트 결과",
+      "dependency": "PR-01"
+    },
+    {
+      "day": 3,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-07",
+      "title": "2PC P2P Windows 빌드 spike",
+      "evidence": "DataChannel 송수신 또는 차단 원인",
+      "dependency": "GM-01, A 지원"
+    },
+    {
+      "day": 4,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "PR-03",
+      "title": "C 코덱과 공통 벡터 검증",
+      "evidence": "C/C# 값 일치",
+      "dependency": "PR-02, C D3"
+    },
+    {
+      "day": 4,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "FW-04",
+      "title": "필터·스윙 상태기계 시작",
+      "evidence": "녹화 입력 이벤트",
+      "dependency": "FW-03"
+    },
+    {
+      "day": 4,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-03",
+      "title": "서비스 폴트·렛·랠리 연결",
+      "evidence": "가상 입력 경기",
+      "dependency": "GM-02"
+    },
+    {
+      "day": 4,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-04",
+      "title": "득점 중복 방지·승패",
+      "evidence": "D4 기본 경기 시연",
+      "dependency": "GM-03"
+    },
+    {
+      "day": 4,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "BL-02",
+      "title": "검색·연결·Service 구독",
+      "evidence": "Windows 수신 도구",
+      "dependency": "D2 BLE 후보"
+    },
+    {
+      "day": 4,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "BL-03",
+      "title": "메인 스레드 큐·패킷 전달",
+      "evidence": "중복 없는 RacketInput",
+      "dependency": "PR-02, BL-01"
+    },
+    {
+      "day": 5,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-04",
+      "title": "스윙 분류·파워 조정",
+      "evidence": "유형별 이벤트",
+      "dependency": "FW-04"
+    },
+    {
+      "day": 5,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "FW-05",
+      "title": "GATT 알림·명령 처리",
+      "evidence": "Notify·ACK 로그",
+      "dependency": "PR-02"
+    },
+    {
+      "day": 5,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-05",
+      "title": "표준 입력 타격·자동 이동",
+      "evidence": "가상 입력 랠리",
+      "dependency": "GM-04, BL-01"
+    },
+    {
+      "day": 5,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "AI-01",
+      "title": "Unity 독립 상태·정책 API",
+      "evidence": "정책 단독 실행",
+      "dependency": "GM-02"
+    },
+    {
+      "day": 5,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "MS-01",
+      "title": "방 코드·생성·참가 순수 로직",
+      "evidence": "충돌/인원 테스트",
+      "dependency": "온라인 계약"
+    },
+    {
+      "day": 5,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "MS-02",
+      "title": "WebSocket 요청·응답",
+      "evidence": "두 모의 클라이언트",
+      "dependency": "MS-01"
+    },
+    {
+      "day": 6,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-05",
+      "title": "보정 명령·반복 이벤트 통합",
+      "evidence": "명령 결과·중복 벡터",
+      "dependency": "FW-03, FW-05"
+    },
+    {
+      "day": 6,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "FW-06",
+      "title": "장착·연결 종료·버튼 검증",
+      "evidence": "정지/버튼/센서 오류 로그",
+      "dependency": "FW-05"
+    },
+    {
+      "day": 6,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "AI-02",
+      "title": "착지 예측·쉬움 정책",
+      "evidence": "예측 사례·easy 랠리",
+      "dependency": "AI-01"
+    },
+    {
+      "day": 6,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-06",
+      "title": "메뉴·연결·모드 UI",
+      "evidence": "1인 플레이 화면",
+      "dependency": "GM-05"
+    },
+    {
+      "day": 6,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "MS-03",
+      "title": "같은 방 시그널링전달",
+      "evidence": "offer/answer/ICE 로그",
+      "dependency": "MS-02"
+    },
+    {
+      "day": 6,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "BL-04",
+      "title": "재연결·보정 ACK 상태",
+      "evidence": "세션 초기화 로그",
+      "dependency": "BL-03, FW-05"
+    },
+    {
+      "day": 7,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-04",
+      "title": "측정 데이터로 임계값 보정",
+      "evidence": "인식 정확도 표",
+      "dependency": "FW-06"
+    },
+    {
+      "day": 7,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "BL-03",
+      "title": "실물 입력→Unity 통합 지원",
+      "evidence": "실물 타격 로그",
+      "dependency": "BL-03, GM-05"
+    },
+    {
+      "day": 7,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "AI-03",
+      "title": "하·중·상 설정과 오류",
+      "evidence": "세 정책 사례",
+      "dependency": "AI-02"
+    },
+    {
+      "day": 7,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-06",
+      "title": "실물 입력·AI 경기 통합",
+      "evidence": "실제 컨트롤러 1게임",
+      "dependency": "FW-05, BL-03"
+    },
+    {
+      "day": 7,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "MS-04",
+      "title": "릴레이·역할·epoch 검사",
+      "evidence": "릴레이 메시지 테스트",
+      "dependency": "MS-03"
+    },
+    {
+      "day": 7,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-07",
+      "title": "MatchClient 코드 참가·전송 경계",
+      "evidence": "온라인 로비 연결",
+      "dependency": "MS-02, D3 spike"
+    },
+    {
+      "day": 8,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-06",
+      "title": "라켓 장착·센서 이상 검증",
+      "evidence": "실기 실패 경로",
+      "dependency": "FW-06"
+    },
+    {
+      "day": 8,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-07",
+      "title": "P2P·릴레이 선택 계약 검토",
+      "evidence": "양쪽 mode·epoch 일치",
+      "dependency": "MS-04, GM-07"
+    },
+    {
+      "day": 8,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "AI-04",
+      "title": "seed·반응 시간·단독 검증",
+      "evidence": "재현 가능한 AI 결과",
+      "dependency": "AI-03"
+    },
+    {
+      "day": 8,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-05",
+      "title": "D8 실물·AI 플레이 검증",
+      "evidence": "D8 통합 영상",
+      "dependency": "BL-04, AI-03"
+    },
+    {
+      "day": 8,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-07",
+      "title": "시그널링·직접 DataChannel 연결",
+      "evidence": "직접 경로 증거",
+      "dependency": "MS-03, D3 spike"
+    },
+    {
+      "day": 8,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "MS-04",
+      "title": "강제 실패·릴레이 전환",
+      "evidence": "8초 전환 로그",
+      "dependency": "GM-07, MS-04"
+    },
+    {
+      "day": 9,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-04",
+      "title": "정지 오검출·세 스윙 측정",
+      "evidence": "AT-03/04 결과",
+      "dependency": "D8 실물 통합"
+    },
+    {
+      "day": 9,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-08",
+      "title": "호스트 권위·중복 입력 검토",
+      "evidence": "득점 중복 0 기록",
+      "dependency": "B/C 온라인 연결"
+    },
+    {
+      "day": 9,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-08",
+      "title": "호스트 snapshot·게스트 보간",
+      "evidence": "상태 송수신",
+      "dependency": "GM-07"
+    },
+    {
+      "day": 9,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-08",
+      "title": "점수·phase·결과 동기화",
+      "evidence": "양 PC 같은 결과",
+      "dependency": "GM-08"
+    },
+    {
+      "day": 9,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "MS-05",
+      "title": "끊김·heartbeat·재접속",
+      "evidence": "pause/resume 로그",
+      "dependency": "MS-04"
+    },
+    {
+      "day": 9,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "MS-06",
+      "title": "서버 실행·배포 안내",
+      "evidence": "재현 가능한 실행 환경",
+      "dependency": "MS-05"
+    },
+    {
+      "day": 10,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-06",
+      "title": "센서·BLE 연속 실행 확인",
+      "evidence": "30분 관측 기록",
+      "dependency": "D9 인식 조정"
+    },
+    {
+      "day": 10,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-08",
+      "title": "2PC 회귀·P2P 경로 검증",
+      "evidence": "AT-13/14 결과",
+      "dependency": "GM-08, MS-05"
+    },
+    {
+      "day": 10,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-08",
+      "title": "지연·중복·역순 상태 검증",
+      "evidence": "AT-15 결과",
+      "dependency": "GM-08"
+    },
+    {
+      "day": 10,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-06",
+      "title": "재접속·중단·결과 UI",
+      "evidence": "오류 상태 시연",
+      "dependency": "MS-05"
+    },
+    {
+      "day": 10,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "MS-05",
+      "title": "다른 네트워크·재접속 검증",
+      "evidence": "AT-16/17 결과",
+      "dependency": "MS-06"
+    },
+    {
+      "day": 10,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "BL-04",
+      "title": "입력 지연·재연결 측정",
+      "evidence": "PC내 p95·누락 통계",
+      "dependency": "BL-04"
+    },
+    {
+      "day": 11,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "FW-06",
+      "title": "펌웨어 QA·결함 수정 여유",
+      "evidence": "회귀 결과",
+      "dependency": "AT-01~07"
+    },
+    {
+      "day": 11,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "DC-03",
+      "title": "배선·보정·펌웨어 설치 문서",
+      "evidence": "따라할 수 있는 안내",
+      "dependency": "FW-06"
+    },
+    {
+      "day": 11,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-09",
+      "title": "Windows 빌드·플레이 QA",
+      "evidence": "릴리스 후보",
+      "dependency": "AT-08~11"
+    },
+    {
+      "day": 11,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "GM-09",
+      "title": "결함 수정 여유·회귀",
+      "evidence": "회귀 결과",
+      "dependency": "B D11 QA"
+    },
+    {
+      "day": 11,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "DC-03",
+      "title": "2PC 통합·결함 수정 여유",
+      "evidence": "AT-12~17 결과",
+      "dependency": "D10 네트워크"
+    },
+    {
+      "day": 11,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "DC-02",
+      "title": "GitBook 목차·링크·동기화",
+      "evidence": "사이트 검증",
+      "dependency": "DC-01"
+    },
+    {
+      "day": 12,
+      "owner": "A",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "DC-03",
+      "title": "외장 컨트롤러 최종 시연",
+      "evidence": "실기 증거",
+      "dependency": "D11 QA"
+    },
+    {
+      "day": 12,
+      "owner": "A",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "PR-04",
+      "title": "펌웨어·공통 버전표 공개",
+      "evidence": "릴리스·SHA표",
+      "dependency": "전원 검증"
+    },
+    {
+      "day": 12,
+      "owner": "B",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "GM-09",
+      "title": "깨끗한 Windows 실행 검증",
+      "evidence": "AT-18 결과",
+      "dependency": "D11 빌드"
+    },
+    {
+      "day": 12,
+      "owner": "B",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "DC-04",
+      "title": "게임·AI 시연·포트폴리오",
+      "evidence": "영상·남은 문제",
+      "dependency": "AI-04, GM-09"
+    },
+    {
+      "day": 12,
+      "owner": "C",
+      "slot": 1,
+      "pd": 0.5,
+      "task": "DC-03",
+      "title": "P2P·릴레이 최종 증거",
+      "evidence": "분리된 판정",
+      "dependency": "D11 2PC 검증"
+    },
+    {
+      "day": 12,
+      "owner": "C",
+      "slot": 2,
+      "pd": 0.5,
+      "task": "DC-04",
+      "title": "문서·서버 릴리스·최종 체크",
+      "evidence": "GitBook·문서·버전표",
+      "dependency": "전원 검증"
+    }
+  ]
+}

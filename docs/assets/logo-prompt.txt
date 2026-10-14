@@ -1,0 +1,10 @@
+Use case: logo-brand
+Asset type: GitHub organization avatar for Digital Tennis, a PC tennis game controlled by a physical racket controller using an external IMU sensor and Bluetooth.
+Primary request: Create one finished, distinctive, minimal square brand emblem that combines tennis motion and digital sensing.
+Subject: a bold tennis racket silhouette with a tennis ball and a compact geometric digital/circuit motif, integrated into one coherent recognizable mark.
+Style/medium: professional flat vector-like logo rendered as a crisp bitmap, simple geometric shapes, thick clear strokes, elegant negative space.
+Composition/framing: centered emblem occupying about 65 percent of a square 1024 by 1024 canvas; generous even margins; readable at 32px and within a circular crop. Single logo only.
+Scene/backdrop: solid deep navy background, edge to edge.
+Color palette: tennis-ball lime green and a restrained cyan accent with high contrast on deep navy.
+Text: no text or lettering.
+Constraints: original identity for Digital Tennis; no Nintendo or existing sports brand marks, no photographic objects, no mockups, no gradients, no fine circuit lines, no decorative border, no watermark. Deliver a clean square image.
