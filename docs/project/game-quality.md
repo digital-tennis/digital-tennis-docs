@@ -26,7 +26,7 @@ Mac 잠금을 유지한 게임 카메라 PNG와 게임 AudioListener WAV는 OS/�
 
 ## 추가 오프닝/음향 요청
 
-버블파이터와 테니스의 왕자 참고 영상을 실제 브라우저에서 확인하고 기존 코트·선수·공 자산으로12.5초/9컷 실시간 오프닝을 만들었습니다. 전경→집중→서브→공추적→리턴→스매시→라인→고유포즈→타이틀이며 컷 위치/주시점/FOV는 JSON으로 편집합니다. 건너뛰기/다시 보기/움직임 줄이기, 실제 점수/stock/physics tick 격리를 확인했습니다. [연출과 음향 상세](https://github.com/digital-tennis/digital-tennis-game/blob/codex/game-polish/docs/cinematic-and-court-audio.md).
+버블파이터와 테니스의 왕자 참고 영상을 실제 브라우저에서 확인하고 기존 코트·선수·공 자산으로12.5초/9컷 실시간 오프닝을 만들었습니다. 전경→집중→서브→공추적→리턴→스매시→라인→고유포즈→타이틀이며 컷 위치/주시점/FOV는 JSON으로 편집합니다. 건너뛰기/다시 보기/움직임 줄이기, 실제 점수/stock/physics tick 격리를 확인했습니다. [연출과 음향 상세](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/cinematic-and-court-audio.md).
 
 경기 중 듀스/중요 포인트/스킬에도BGM은 정지하고 볼륨0입니다. 득점 때만 함성1회와 심판 콜을 재생하고 다음 서브 때 함성/환경음을 멈춥니다. 메뉴·오프닝·결과는 음악을 허용합니다. 곡 A/B의 사람 선택은 아직 미정이며 경기/듀스/긴장 곡은 설정 청음에서만 재생합니다.
 
