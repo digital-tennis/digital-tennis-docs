@@ -48,3 +48,5 @@ Mac이 잠긴 상태에서는 OS 화면·다른 앱을 캡처하지 않고 게�
 ## 확인된 실행 수치
 
 Unity EditMode 138개·PlayMode 34개, 서버 23개 검사가 통과했습니다. Mac GPU batch에서 15명×3난이도 45개 조합이 실제 포인트와 다음 서브까지 진행됐고 총 210회 타격·오류 0개를 기록했습니다. 온라인은 두 프로세스에서 87포인트·2세트 종료와 상호 동의 재경기를 확인했습니다. 최종 수치와 재현 절차는 게임 저장소의 검증 문서를 기준으로 합니다.
+
+구현/검증 근거: [게임 PR #17](https://github.com/digital-tennis/digital-tennis-game/pull/17), [서버 PR #4](https://github.com/digital-tennis/digital-tennis-match-server/pull/4), [고정 커밋의 상세 검증](https://github.com/digital-tennis/digital-tennis-game/blob/1a70e184b4df13235538c81d7ab57aad116f87e1/docs/polish-validation.md). 온라인 재경기 지원은 서버 변경을 먼저 반영합니다.
