@@ -4,6 +4,7 @@
 
 * [개발 시작 안내](README.md)
 * [현재 구현과 검증 범위](project/implementation-status.md)
+* [게임 완성도 남은 작업과 검증](project/game-quality.md)
 * [프로젝트 목표와 완료 범위](project/overview.md)
 * [제품별 저장소와 책임](project/repositories.md)
 * [시스템 구조와 통합 순서](project/architecture.md)

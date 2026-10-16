@@ -71,3 +71,7 @@ P2P 초기 어댑터는 reliable ordered DataChannel 하나를 사용합니다. 
 ## 직접 연결을 입증할 증거
 
 두 Windows 실행 파일의 연결 상태, 선택된 ICE 후보 종류, 메시지 송수신 카운터를 기록합니다. direct P2P는 선택 경로에 relay 후보가 없음을 확인합니다. IP·토큰은 공개 로그에서 지웁니다. 릴레이를 강제로 선택한 테스트에는 mode=relay 표시와 서버 중계 카운터를 남깁니다. [연결 정보와 시그널링의 공식 설명](https://webrtc.org/getting-started/peer-connections)
+
+## 실제 접촉 위치 표시
+
+게임 스냅샷의 각 player는 선택적인 `hasContactPoint`, `contactPoint:[x,y,z]`를 포함합니다. true이면 `swingContact=true`이며 좌표3개가 모두 유한하고 절댓값128 미만이어야 합니다. false/누락은 접촉 앵커가 없는 이전 표시 형식입니다. 서버는 범위를 검증하고 좌표를 바꾸지 않습니다. Unity는 같은 swingId의 메타데이터/앵커를 고정하고 선수 위치·스윙 나이와 같은 보간 시간선에 표시합니다. 이 표시 좌표가 게스트에게 타격/득점 권위를 부여하지는 않습니다.
