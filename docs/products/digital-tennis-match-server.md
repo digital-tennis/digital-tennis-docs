@@ -1,5 +1,7 @@
 # 온라인 매칭 서버 개발 과제
 
+> 초기 설계/과제와 현재 완료 상태는 다릅니다. [2026-10-16 구현 현황](../project/implementation-status.md)을 먼저 확인하세요. 직접 P2P·실물 BLE·Windows 실기는 별도 증거가 필요합니다.
+
 저장소: [digital-tennis-match-server](https://github.com/digital-tennis/digital-tennis-match-server)  
 초기 담당 역할: C / A 검토
 
