@@ -1,6 +1,6 @@
 # GitBook 무료 플랜 연결
 
-GitBook Free는 확인 시점에 Git Sync와 편집자 1명을 제공합니다. 세 명이 무료로 협업하려면 GitHub 브랜치·PR로 문서를 수정하고, 한 명이 GitBook 연결과 공개 사이트를 관리합니다. 팀원이 GitBook 웹 편집자로 모두 참여하는 기능은 이 무료 구성의 전제가 아닙니다. [현재 가격과 기능](https://www.gitbook.com/pricing)
+2026-10-16 공식 가격표에서 GitBook Free의 Git Sync와 무료 사용자 1명을 확인했습니다. 세 명이 무료로 협업하려면 GitHub 브랜치·PR로 문서를 수정하고, 한 명이 GitBook 연결과 공개 사이트를 관리합니다. 팀원이 GitBook 웹 편집자로 모두 참여하는 기능은 이 무료 구성의 전제가 아닙니다. [현재 가격과 기능](https://www.gitbook.com/pricing)
 
 ## 연결할 값
 
@@ -31,3 +31,7 @@ GitBook Free는 확인 시점에 Git Sync와 편집자 1명을 제공합니다. 
 ## 연결이 안 될 때
 
 저장소가 목록에 없으면 GitBook 앱의 조직·저장소 접근을 확인합니다. 목차가 비면 실제 매핑 디렉터리와 `.gitbook.yaml` 기준 상대 경로를 확인합니다. 중복 페이지가 생기면 SUMMARY에서 같은 Markdown 파일이 두 번 등장하는지 확인합니다. GitBook의 계정 연결·사이트 공개는 실제 GitBook 계정에서 수행해야 하며 저장소 생성만으로 자동 연결되지 않습니다.
+
+## 연결 상태의 판정
+
+2026-10-16 점검 시 이 저장소의 읽을 수 있는 GitHub webhook 목록은 비어 있었습니다. GitBook GitHub App 방식은 webhook 목록만으로 확인할 수 없으므로 실제 Space 연결/게시 완료로 표시하지 않습니다. 계정에서 Space → Git Sync에서 저장소·main·디렉터리를 확인하고 게시 URL을 실행 기록에 추가하세요. YAML과 목차 준비만으로 게시 완료라고 판단하지 않습니다.
