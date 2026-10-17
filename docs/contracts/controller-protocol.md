@@ -1,6 +1,6 @@
-# 컨트롤러 통신 규격 v1
+# 컨트롤러 통신 규격 v1/v2
 
-이 규격은 firmware와 protocol, ble-unity가 공유하는 초기 계약입니다. D1에 A/C가 검토하고 동일 테스트 벡터로 고정합니다. 게임 규칙과 온라인 메시지는 포함하지 않습니다.
+v1 배치를 보존하면서 v2의 명시적 의도를 추가한 계약입니다. [정본 코덱·규격 PR](https://github.com/digital-tennis/digital-tennis-protocol/pull/1)을 함께 확인합니다. D1에 A/C가 검토하고 동일 테스트 벡터로 고정합니다. 게임 규칙과 온라인 메시지는 포함하지 않습니다.
 
 ## GATT와 전송
 
@@ -19,7 +19,7 @@
 | 오프셋 | 길이 | 이름 | 형식과 의미 |
 | --- | --- | --- | --- |
 | 0 | 1 | magic | 0x44 |
-| 1 | 1 | version | 1 |
+| 1 | 1 | version | 1 또는2 |
 | 2 | 1 | type | 1 SWING, 2 BUTTON, 3 STATUS, 128 CALIBRATE, 129 ACK |
 | 3 | 1 | flags | bit0 보정 완료, bit1 센서 준비, bit2 왼손; bit3~7=0 |
 | 4 | 2 | sequence | uint16, 송신 방향별 패킷 순번 |
@@ -34,7 +34,8 @@
 
 | type | kind | 추가 조건 |
 | --- | --- | --- |
-| SWING | 1 포핸드, 2 백핸드, 3 서브 | flags의 bit0·bit1이 모두 1일 때만 게임 입력으로 사용 |
+| SWING v1/v2 | 1 포핸드, 2 백핸드, 3 서브 | flags의 bit0·bit1이 모두 1일 때만 게임 입력으로 사용 |
+| SWING v2 전용 | 4 스매시,5 발리,6 슬라이스,7 로브,8 스킬 | v1에서4~8은 INVALID_KIND, 버전3이상은 UNSUPPORTED_VERSION |
 | BUTTON | 1 확인, 2 시작, 3 일시정지 | power·각도는 0 |
 | STATUS | 0 | eventId·power·각도는 0, 준비/보정 상태 보고 |
 | CALIBRATE | 0 | flags·deviceTimeMs·power·각도=0, eventId는 PC 명령 ID |
@@ -63,3 +64,7 @@ SDK는 yawCdeg/100, pitchCdeg/100으로 각도를 복원한 뒤 `aimX=clamp(yawD
 길이≠20, magic/version 불일치, 알려지지 않은 type/kind, 예약 flags, 범위를 벗어난 필드, CRC 오류는 파싱 실패 코드로 반환합니다. 실행이 중단되거나 0값의 정상 스윙을 만들어서는 안 됩니다. 보정 미완료 SWING은 패킷 해석 자체는 가능하지만 SDK에서 게임 이벤트로 내보내지 않고 상태 경고를 표시합니다.
 
 정상·오류 데이터는 [공통 테스트 벡터](../testing/protocol-vectors.json)에 있습니다. 입력은 테스트용이며 실기 로그가 아닙니다.
+
+## 소프트웨어 지원과 실물 인식
+
+v2의8종 의도는 소프트웨어 전송 계약이며 실제8제스처 인식률을 의미하지 않습니다. 기본 스윙/버튼·경기 문맥 매핑과 실제 모델·임계값 튜닝을 구분합니다. SDK는 보정중 BUSY ACK를 최종 성공/실패로 간주하지 않고 원래5초 제한 안에서 완료ACK를 기다립니다. 연결/보정/서브·스윙·스킬 테스트를 구분하며 저장만 입력 소스를 바꿉니다.
