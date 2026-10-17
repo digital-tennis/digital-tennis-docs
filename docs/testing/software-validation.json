@@ -1,0 +1,519 @@
+{
+  "date": "2026-10-18",
+  "scope": "Software implementation and directly executed available-machine validation; physical external IMU/radio/Windows/two-PC/WAN and account publication remain separate.",
+  "commits": {
+    "game": "88c95fea6100290090687ba84be8e3202be03ef5",
+    "server": "3efc7fe405cf204ea3ccdfeb8e962e1eb3ea0ba1",
+    "protocol": "0f3b8b251af821d7c7eb7f6473b95144d4e12810",
+    "firmware": "f930006fd3d9a9e929996ed93964de490e1d3f1e",
+    "ble": "d394b555deae13064a10cb398c79957d091fe1de"
+  },
+  "unit": {
+    "protocolSharedCases": 2038,
+    "firmwareHostFixturePassed": true,
+    "bleChecks": 31,
+    "serverChecks": 28,
+    "aiChecks": 25
+  },
+  "unity": {
+    "test-edit": {
+      "passed": 189,
+      "failed": 0,
+      "ended": "2026-10-17 16:31:34Z",
+      "sha256": "543f72ab6a9c4f3379b645314101c4441e9277d843e44ec3b75fb5f0f97ef70e"
+    },
+    "test-play": {
+      "passed": 43,
+      "failed": 0,
+      "ended": "2026-10-17 16:37:52Z",
+      "sha256": "fec227ba95c7c147c3f71b0f93cb45ca0ae768c496b0f3fd0b4b529988181c43"
+    }
+  },
+  "online": {
+    "online-direct-final": {
+      "relayMessages": 0,
+      "reportSha256": "7f5ecb06a5c7137e2cfa20b203e2378c81e6aa5a12a0591f0f79a4da740ee744",
+      "roles": {
+        "host": {
+          "mode": "p2p",
+          "epoch": 1,
+          "directSent": 8553,
+          "directReceived": 76,
+          "peerFallbacks": 0,
+          "peerFailureExercised": false,
+          "transportHistory": [
+            "p2p:1"
+          ],
+          "winner": "host",
+          "score": {
+            "version": 1,
+            "rules": [
+              3,
+              6,
+              6,
+              7
+            ],
+            "games": [
+              6,
+              0
+            ],
+            "sets": [
+              2,
+              0
+            ],
+            "totalPoints": [
+              56,
+              30
+            ],
+            "completedSets": [
+              {
+                "nearGames": 7,
+                "farGames": 6,
+                "nearTieBreak": 8,
+                "farTieBreak": 6
+              },
+              {
+                "nearGames": 6,
+                "farGames": 0,
+                "nearTieBreak": 0,
+                "farTieBreak": 0
+              }
+            ],
+            "tieBreak": false,
+            "gameComplete": true,
+            "setComplete": true,
+            "endChanges": 12,
+            "gameServer": "host"
+          },
+          "completedPoints": 86,
+          "rematches": 0,
+          "rematchPoints": [
+            56,
+            30
+          ],
+          "sameRoom": false,
+          "runtimeErrors": 0,
+          "protocolErrors": 0
+        },
+        "guest": {
+          "mode": "p2p",
+          "epoch": 1,
+          "directSent": 76,
+          "directReceived": 8553,
+          "peerFallbacks": 0,
+          "peerFailureExercised": false,
+          "transportHistory": [
+            "p2p:1"
+          ],
+          "winner": "host",
+          "score": {
+            "version": 1,
+            "rules": [
+              3,
+              6,
+              6,
+              7
+            ],
+            "games": [
+              6,
+              0
+            ],
+            "sets": [
+              2,
+              0
+            ],
+            "totalPoints": [
+              56,
+              30
+            ],
+            "completedSets": [
+              {
+                "nearGames": 7,
+                "farGames": 6,
+                "nearTieBreak": 8,
+                "farTieBreak": 6
+              },
+              {
+                "nearGames": 6,
+                "farGames": 0,
+                "nearTieBreak": 0,
+                "farTieBreak": 0
+              }
+            ],
+            "tieBreak": false,
+            "gameComplete": true,
+            "setComplete": true,
+            "endChanges": 12,
+            "gameServer": "host"
+          },
+          "completedPoints": 86,
+          "rematches": 0,
+          "rematchPoints": [
+            56,
+            30
+          ],
+          "sameRoom": false,
+          "runtimeErrors": 0,
+          "protocolErrors": 0
+        }
+      },
+      "scope": "Actual two standalone Unity GPU processes on the same Mac. Menu callbacks and scripted ordinary adapter; physical pointer/keyboard not claimed."
+    },
+    "online-fallback-final": {
+      "relayMessages": 8714,
+      "reportSha256": "7ef77e216d7da6f6c331faa69a5adb317c89a4ea66589348e4aedcc24a861d84",
+      "roles": {
+        "host": {
+          "mode": "relay",
+          "epoch": 3,
+          "directSent": 555,
+          "directReceived": 3,
+          "peerFallbacks": 1,
+          "peerFailureExercised": false,
+          "transportHistory": [
+            "p2p:1",
+            "relay:2",
+            "relay:3"
+          ],
+          "winner": "host",
+          "score": {
+            "version": 1,
+            "rules": [
+              3,
+              6,
+              6,
+              7
+            ],
+            "games": [
+              6,
+              0
+            ],
+            "sets": [
+              2,
+              0
+            ],
+            "totalPoints": [
+              56,
+              31
+            ],
+            "completedSets": [
+              {
+                "nearGames": 7,
+                "farGames": 6,
+                "nearTieBreak": 8,
+                "farTieBreak": 6
+              },
+              {
+                "nearGames": 6,
+                "farGames": 0,
+                "nearTieBreak": 0,
+                "farTieBreak": 0
+              }
+            ],
+            "tieBreak": false,
+            "gameComplete": true,
+            "setComplete": true,
+            "endChanges": 12,
+            "gameServer": "host"
+          },
+          "completedPoints": 87,
+          "rematches": 1,
+          "rematchPoints": [
+            1,
+            0
+          ],
+          "sameRoom": true,
+          "runtimeErrors": 0,
+          "protocolErrors": 0
+        },
+        "guest": {
+          "mode": "relay",
+          "epoch": 3,
+          "directSent": 3,
+          "directReceived": 555,
+          "peerFallbacks": 1,
+          "peerFailureExercised": true,
+          "transportHistory": [
+            "p2p:1",
+            "relay:2",
+            "relay:3"
+          ],
+          "winner": "host",
+          "score": {
+            "version": 1,
+            "rules": [
+              3,
+              6,
+              6,
+              7
+            ],
+            "games": [
+              6,
+              0
+            ],
+            "sets": [
+              2,
+              0
+            ],
+            "totalPoints": [
+              56,
+              31
+            ],
+            "completedSets": [
+              {
+                "nearGames": 7,
+                "farGames": 6,
+                "nearTieBreak": 8,
+                "farTieBreak": 6
+              },
+              {
+                "nearGames": 6,
+                "farGames": 0,
+                "nearTieBreak": 0,
+                "farTieBreak": 0
+              }
+            ],
+            "tieBreak": false,
+            "gameComplete": true,
+            "setComplete": true,
+            "endChanges": 12,
+            "gameServer": "host"
+          },
+          "completedPoints": 87,
+          "rematches": 1,
+          "rematchPoints": [
+            1,
+            0
+          ],
+          "sameRoom": true,
+          "runtimeErrors": 0,
+          "protocolErrors": 0
+        }
+      },
+      "scope": "Actual two standalone Unity GPU processes on the same Mac. Menu callbacks and scripted ordinary adapter; physical pointer/keyboard not claimed."
+    }
+  },
+  "quality": {
+    "roster": {
+      "mode": "staged-preview",
+      "characters": 15,
+      "runtimeErrors": 0,
+      "points": 0
+    },
+    "stadium": {
+      "passed": true,
+      "nextServeReady": true,
+      "runtimeErrors": 0,
+      "spectators": 502,
+      "seats": 624,
+      "nearHits": 3,
+      "farHits": 4,
+      "themes": 15,
+      "views": 30,
+      "colliders": 0,
+      "totalPoints": 1,
+      "physicsTicks": 760
+    },
+    "motion": {
+      "nearId": "KOR",
+      "farId": "JPN",
+      "passed": true,
+      "capturedServe": true,
+      "capturedRunning": true,
+      "errors": 0,
+      "contacts": 74,
+      "serves": 11,
+      "strokes": 6,
+      "maxContactError": 0.00021058354468550533,
+      "maxPlantedError": 2.4883076548576355e-05,
+      "maxPlantedSlipPerFrame": 0.007584128994494677,
+      "maxGripError": 9.612115263735177e-07,
+      "maxArmStretch": 1.0767501592636108,
+      "scope": "automated ordinary practice adapter; actual hit/serve anchors; no physical keyboard, score or ball writes"
+    },
+    "audio": {
+      "quietSamples": 682,
+      "pointCheers": 1,
+      "musicMuted": true,
+      "crowdStoppedAtNextServe": true,
+      "musicVolume": 0.0,
+      "passed": true,
+      "loaded": 160,
+      "rejected": 1,
+      "plays": 107,
+      "musicSwitches": 6,
+      "advancingSources": 0,
+      "revision": 2,
+      "dspSamples": 1982464,
+      "limitedPeak": 0.18524828553199768
+    },
+    "aiSurvey": {
+      "passed": true,
+      "cases": 45,
+      "nextServeCases": 45,
+      "scope": "Fixed seed42, scripted local adapter vs three AI policies, one real point per case; not human win rates or all-pairs balance"
+    },
+    "balanceExperiment": {
+      "scope": "225 ordered pairs x 3 difficulties x 3 seeds x 3 local input strategies x 2 starting servers; 4 real points per case. Detached fixed-step production models; excludes rendering, transport, human skill and perception. All point awards come from ball/rule events.",
+      "deterministic": true,
+      "cases": 12150,
+      "points": 48600,
+      "timeouts": 0,
+      "gameplayHash": "03663e3fba0b190ec374104a6593261ab3dd210c2dd75d74197bf58b45e336f0",
+      "characterHash": "6675ae9981558566a8aae52b9f76e5fe"
+    },
+    "release-intro": {
+      "passed": true,
+      "automaticTitle": true,
+      "skipRestored": true,
+      "replayRestored": true,
+      "audioRecorded": true,
+      "frames": 149,
+      "runtimeErrors": 0,
+      "listenerSamples": 1114112,
+      "ticksBefore": 0,
+      "ticksAfter": 0,
+      "points": 0,
+      "timeScale": 1.0
+    },
+    "release-audio": {
+      "quietSamples": 678,
+      "pointCheers": 1,
+      "musicMuted": true,
+      "crowdStoppedAtNextServe": true,
+      "musicVolume": 0.0,
+      "passed": true,
+      "loaded": 160,
+      "rejected": 1,
+      "plays": 105,
+      "musicSwitches": 6,
+      "advancingSources": 0,
+      "revision": 2,
+      "dspSamples": 1941504,
+      "limitedPeak": 0.1852404922246933
+    }
+  },
+  "packages": [
+    {
+      "platform": "mac",
+      "archive": "DigitalTennis-release-mac-88c95fea.zip",
+      "sha256": "2c2a2a53c274df9a4b81fcc3ec5cf7a2b2e320e04b6d3081c2524e7a3faf463c",
+      "bytes": 93623467,
+      "zipCrcPassed": true,
+      "sourceCommit": "88c95fea6100290090687ba84be8e3202be03ef5",
+      "development": false,
+      "allowDebugging": false,
+      "macSignatureVerified": true,
+      "nativeNotices": [
+        "Licenses/Unity-WebRTC/LICENSE.md",
+        "Licenses/Unity-WebRTC/Third Party Notices.md"
+      ]
+    },
+    {
+      "platform": "windows",
+      "archive": "DigitalTennis-release-windows-88c95fea.zip",
+      "sha256": "ca623029a9603b8b760e1426c1ef94d624ed63c643d7600835c05fae470bd5e9",
+      "bytes": 129291033,
+      "zipCrcPassed": true,
+      "sourceCommit": "88c95fea6100290090687ba84be8e3202be03ef5",
+      "development": false,
+      "allowDebugging": false,
+      "macSignatureVerified": false,
+      "nativeNotices": [
+        "Licenses/Microsoft.AspNetCore.App.Runtime.win-x64-10.0.5/LICENSE.txt",
+        "Licenses/Microsoft.AspNetCore.App.Runtime.win-x64-10.0.5/THIRD-PARTY-NOTICES.TXT",
+        "Licenses/Microsoft.NET.ILLink.Tasks-10.0.5/THIRD-PARTY-NOTICES.TXT",
+        "Licenses/Microsoft.NETCore.App.Host.win-x64-10.0.5/LICENSE.TXT",
+        "Licenses/Microsoft.NETCore.App.Host.win-x64-10.0.5/THIRD-PARTY-NOTICES.TXT",
+        "Licenses/Microsoft.NETCore.App.Runtime.win-x64-10.0.5/LICENSE.TXT",
+        "Licenses/Microsoft.NETCore.App.Runtime.win-x64-10.0.5/THIRD-PARTY-NOTICES.TXT",
+        "Licenses/Microsoft.WindowsDesktop.App.Ref-10.0.5/LICENSE",
+        "Licenses/Microsoft.WindowsDesktop.App.Runtime.win-x64-10.0.5/LICENSE",
+        "Licenses/Unity-WebRTC/LICENSE.md",
+        "Licenses/Unity-WebRTC/Third Party Notices.md",
+        "Licenses/packages.json"
+      ]
+    }
+  ],
+  "packet": {
+    "passed": true,
+    "nextServe": true,
+    "pauseOnDisconnect": true,
+    "captures": 14,
+    "errors": 0,
+    "nearHits": 1,
+    "farHits": 2,
+    "points": 1,
+    "scope": "Real Unity GPU UI, packet codec, BLE SDK and ordinary adapter with explicitly MOCK radio; no physical pairing/IMU claim.",
+    "runtimeSourceHashesMatchFinalSource": true
+  },
+  "normalWindow": {
+    "macAppLaunchViaLaunchServices": true,
+    "keyboardMouseVerified": false,
+    "reason": "Native UI returned screenshot timeout/elementHasNoFrame; no lock bypass. Automated menus/input and GPU capture tested separately."
+  },
+  "deferred": [
+    "Physical external IMU model/overlay/axes and physical boot/flash",
+    "Actual BLE radio/OS consent/pairing and gesture accuracy",
+    "Physical Windows/two-PC/WAN tests",
+    "Public hosting/domain and GitBook account publication",
+    "Human music A/B, voice and balance adoption; music still undecided",
+    "Team-wide source license decision"
+  ],
+  "firmwareBoardBuild": {
+    "scope": "Compile/link only; no probe, flash, physical board, radio or IMU execution. Synthetic external-sensor fixture is not a product model/address selection.",
+    "ncs": "3.4.1 LTS",
+    "zephyr": "4.4.2",
+    "compiler": "GNU 14.3.0",
+    "toolchainSdk": "1.0.1",
+    "toolchainBundle": "ccc010f809",
+    "sdkSourceCommits": {
+      "nrf": "b20f8619ba9a5530f8c34b0a130d829947cfe55d",
+      "zephyr": "33fa6a7aac6a4401d16a67cb9f27a3483fa02dd6"
+    },
+    "toolchainManifestSha256": "bfbfcbfc143b8794368f36a13d6f4645d22e03f2af2122809f1a79cbb9016d95",
+    "board": "nu40dk_kit/nrf52840",
+    "variants": {
+      "no-external-sensor": {
+        "elfSha256": "240fcbc228063e8f357dbfeca08c34f5887eaf3882b3b3483fbf5efc01c77507",
+        "hexSha256": "47e1829692bbd66bf7b66316e7f21d706cba2ff8853eed446e3f3c99b9baa9fc",
+        "flashBytes": 175696,
+        "ramBytes": 33932,
+        "mpu6050DriverCompiled": false,
+        "physicalRun": false
+      },
+      "synthetic-external-driver": {
+        "elfSha256": "08ebb72eed07832b7d8533eb32f3787a05ddb2979d6368a7314dcfd8a609dcb7",
+        "hexSha256": "6bcc1fc0acfa129d3269260970bb5521c672669dd8ced24671548ab3397acd85",
+        "flashBytes": 179796,
+        "ramBytes": 33996,
+        "mpu6050DriverCompiled": true,
+        "physicalRun": false
+      }
+    },
+    "sourceHashes": {
+      "src/main.c": "79a927a9f79933aea70006c51c9866dfcfa474b8099518a9e4df7ad24bef8327",
+      "src/hw/driver/external_imu.c": "48a56e8d9a013ff5354185cf336688fd750ab4e51b44970dcbeec0d861099802",
+      "src/ap/ble_peripheral.c": "2ab527c2647efdca4432dc2873d70c99093374b3d5a5d80ede1684698204a4c3",
+      "src/ap/dt_controller.c": "4f652d1ec66f69c088fac0ccd4355d3751d4fd2f69746cb60bf16857ac9d042c",
+      "src/common/dt_controller.h": "940cd8dd82c16beb0314624785ec3d99b929c2c6016af38231aa61b2a460f4ff",
+      "boards/baram/nu40dk_kit/nu40dk_kit.dts": "6c970fdc46780e82e63c5fe59583ce6a87d97c1e187d0754ed9efdd7f32f3137",
+      "boards/baram/nu40dk_kit/pre_dt_board.cmake": "32322cc2a4a119c4c625927979ba027e498f06f824dcbb91f57585862e9b9b0d",
+      "boards/baram/nu40dk_kit/nu40dk_kit_defconfig": "8f535222600c600e4542ad83f748dc0f37a9ef44e8cc251676c59c17b8fb9989",
+      "boards/baram/nu40dk_kit/board.yml": "2b336b1c0fc372841d9eb18d47d67d31a79786b4e330dc3211da39c96e658e15",
+      "boards/baram/nu40dk_kit/nu40dk_kit-pinctrl.dtsi": "6b34f57b7809d31a865e0755135a1f44480204e31095f35fa55ee0ed2d357d20",
+      "boards/baram/nu40dk_kit/nu40dk_kit.yaml": "fdc77a1ad0fed06de3bef95ef85cd2630ddd341cf89c1c61b29e96451c76de59",
+      "boards/baram/nu40dk_kit/Kconfig.nu40dk_kit": "5b43aebff0271fabb00be03d8d881cdee5e882879d4885ea380d42b099503c33",
+      "boards/baram/nu40dk_kit/board.cmake": "fbf77ca79859c7a3fd425bd3552784ee39d65a964fcae52ef71d099b3addf5d2",
+      "tests/compile-fixtures/README.md": "03827f58587fd9c08262c911083e82bfcd4709ac6ce2a57b6b5b891a881803a1",
+      "tests/compile-fixtures/mpu6050.overlay": "e729271a2ccb808e190e91b12c9caaa6074d4408cfa7d43bcdfe5e97278cf563",
+      "tools/build-board.py": "0d8c202c9224af0edd81773f87ceb7e60362c241e55a080fa6ac37ac7e45acda",
+      "CMakeLists.txt": "9f2a9b741bb43cf259f4e679c835c593700f0772e413138a6889e68babb80076",
+      "prj.conf": "1cd33f1735a3b1c36ead31b7a7c26f54b9042666c2d35537378a87fc7aaa16cf"
+    },
+    "sdkSourceDirty": {
+      "nrf": false,
+      "zephyr": false
+    }
+  }
+}

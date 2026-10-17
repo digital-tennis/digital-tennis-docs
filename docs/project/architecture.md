@@ -1,6 +1,6 @@
 # 시스템 구조와 통합 순서
 
-> 초기 설계/과제와 현재 완료 상태는 다릅니다. [2026-10-16 구현 현황](../project/implementation-status.md)을 먼저 확인하세요. 직접 P2P·실물 BLE·Windows 실기는 별도 증거가 필요합니다.
+> 초기 설계/과제와 현재 완료 상태는 다릅니다. [현재 구현·검증 범위](../project/implementation-status.md)을 먼저 확인하세요. 직접 P2P·실물 BLE·Windows 실기는 별도 증거가 필요합니다.
 
 외장 IMU 드라이버는 단위가 정규화된 샘플을 반환하고, 스윙 인식기는 샘플을 이벤트로 바꿉니다. 펌웨어는 이벤트를 공통 패킷으로 인코딩합니다. Windows BLE SDK는 수신한 패킷을 검증한 뒤 Unity 메인 스레드에서 `RacketInput`으로 전달합니다.
 
