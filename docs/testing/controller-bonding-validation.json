@@ -239,5 +239,12 @@
     "unityPlayPassed": 43,
     "unityPlaySkippedNullGpu": 1,
     "note": "Software checks on integrated product sources. Earlier normal-window evidence retains its original source revisions; latest-main physical reconfirmation is a separate run."
+  },
+  "followUpButtonModeValidation": {
+    "summary": "nu54-button-validation.json",
+    "gamePR": "https://github.com/digital-tennis/digital-tennis-game/pull/26",
+    "evidence": "https://github.com/digital-tennis/digital-tennis-game/blob/22f92579d9f508a05b4ec749c2852b28503e5080/docs/nu54-buttons.md",
+    "scope": "Separate explicit button profile; original sensorless motion-profile evidence remains historical",
+    "imuValidation": "deferred"
   }
 }
