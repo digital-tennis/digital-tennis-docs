@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-19",
+  "verdict": "Software checks passed; real OS bonding and Unity link round trip remain unverified",
+  "primaryHardware": "NU40-DK + separately attached external IMU",
+  "temporaryPhysicalHardware": "NU54",
+  "sourceRevisions": {
+    "protocol": "12dae689fd9b25187426829c606529508c100e65",
+    "firmware": "4a55c57146ea6ca992daf25b2223d192c5682620",
+    "ble-unity": "a7efc76b5d53d1ded2ebf7f9f07f949939158e92",
+    "game": "5203b38133124a28280338c4b3a500f291a886ed",
+    "ai": "7053a4e74c25b55cb14db2ef6d975fbd5e7593b6",
+    "match-server": "d064ade0c60a526024b8e2793e1dcbc5d12567a3"
+  },
+  "firmwareImageSha256": "fd62b94b1201f348751376ca75b09b654abf4a597014325783ef6db52d1d8726",
+  "firmwareCodeVerified": true,
+  "walletStorageReadOrWritten": false,
+  "privateCodeBackupsPublished": false,
+  "scopePreserved": {
+    "developers": 3,
+    "days": 12,
+    "personDays": 36,
+    "beginnerAssignments": 37,
+    "wbsHalfDaySlots": 72
+  },
+  "tests": {
+    "packetCrossLanguageCases": 2045,
+    "securityGrammarCases": 66046,
+    "firmwareHostSuites": 2,
+    "firmwareBoardConfigurations": 3,
+    "sdkChecks": 44,
+    "aiChecks": 25,
+    "serverChecks": 28,
+    "unityEditPassed": 189,
+    "unityPlayPassed": 43,
+    "unityPlaySkippedNullGpu": 1,
+    "separateGpuPointerPassed": 1,
+    "separatePacketScenePassed": 1,
+    "staticSourcePassed": true
+  },
+  "realRadio": {
+    "serviceAdvertisingFound": true,
+    "isolatedDotnetScanFound": 1,
+    "gameDllInBundledMonoScanFound": 1,
+    "unicodeAndNativePipeInMono": true,
+    "dedicatedIdentitySurvivedReset": true,
+    "encryptedBondConfirmed": false,
+    "tennisLinkReply": false,
+    "bondReusedAfterBoardReset": false,
+    "latestMonoAttempt": "Discovery succeeded; pairing timed out after60s; Error/Bond=false; no input opened",
+    "lastNormalWindow": "Earlier attempts included discovery/connection request and later0-device results. Latest build awaits manual Mac unlock and UI recheck.",
+    "osKeyDatabaseInspected": false,
+    "lastErrors": [
+      "ATT15 insufficient encryption",
+      "SMP timeout"
+    ],
+    "imuValidation": "deferred"
+  },
+  "remaining": [
+    "Manual Mac unlock and OS approval in normal game window",
+    "Latest Unity discovery/secure link/probe/calibration-not-ready/save-block checks",
+    "Disconnect/reconnect and board restart bond reuse",
+    "NU40 physical GPIO and external IMU",
+    "Physical Windows and two-PC/WAN"
+  ],
+  "prs": [
+    {
+      "product": "protocol",
+      "url": "https://github.com/digital-tennis/digital-tennis-protocol/pull/2",
+      "draft": true
+    },
+    {
+      "product": "firmware",
+      "url": "https://github.com/digital-tennis/digital-tennis-firmware/pull/2",
+      "draft": true
+    },
+    {
+      "product": "ble-unity",
+      "url": "https://github.com/digital-tennis/digital-tennis-ble-unity/pull/2",
+      "draft": true
+    },
+    {
+      "product": "game",
+      "url": "https://github.com/digital-tennis/digital-tennis-game/pull/25",
+      "draft": true
+    },
+    {
+      "product": "ai",
+      "url": "https://github.com/digital-tennis/digital-tennis-ai/pull/4",
+      "draft": true
+    },
+    {
+      "product": "match-server",
+      "url": "https://github.com/digital-tennis/digital-tennis-match-server/pull/6",
+      "draft": true
+    },
+    {
+      "product": "docs",
+      "url": "https://github.com/digital-tennis/digital-tennis-docs/pull/3",
+      "draft": true
+    }
+  ],
+  "mergePerformed": false,
+  "mainChanged": false,
+  "releases": [
+    {
+      "platform": "mac",
+      "sourceCommit": "5203b38133124a28280338c4b3a500f291a886ed",
+      "sha256": "e8bfbbc5fe11299fac89c25e10bd3e04cb755f39237b8cdf7cedcf05f6545b6a",
+      "archive": "DigitalTennis-release-mac-5203b381.zip",
+      "macSignatureVerified": true,
+      "bytes": 93711515,
+      "zipCrcVerified": true,
+      "cleanSource": true,
+      "development": false,
+      "allowDebugging": false,
+      "nativeNotices": 22
+    },
+    {
+      "platform": "windows",
+      "sourceCommit": "5203b38133124a28280338c4b3a500f291a886ed",
+      "sha256": "6c1bb3ead0f6b6c8ca1faa9686917d08de2589b0e092bc0624e69e13eec3271f",
+      "archive": "DigitalTennis-release-windows-5203b381.zip",
+      "macSignatureVerified": false,
+      "bytes": 143390655,
+      "zipCrcVerified": true,
+      "cleanSource": true,
+      "development": false,
+      "allowDebugging": false,
+      "nativeNotices": 32
+    }
+  ]
+}
