@@ -1,5 +1,7 @@
 # 현재 구현과 검증 범위
 
+> 이 페이지는 2026-10-18 기준의 구현과 과거 검증 이력입니다. 후속 NU-54 설치·실제 본딩/테니스 왕복·재시작 복구와 최신 배포 결과는 [현재 본딩 검수](controller-bonding.md)를 확인하세요.
+
 기준: 2026-10-18. **12일·3명·외장 IMU 별도 부착**은 최초 제품 계획입니다. 아래는 실제 소프트웨어 구현 현황이며 계획표를 소급해서 완료 처리하지 않습니다.
 
 | 제품 | 구현된 경계 | 남은 외부 검증 |
@@ -61,6 +63,14 @@ Unity EditMode150개·전체PlayMode35개, 전경 추가 뒤 메뉴4개, 서버2
 
 ## 2026-10-18 소프트웨어 확장 작업
 
-게임 PR23까지 main에 반영됐습니다. 국기·국경선·기기별 상세·키 배치·테스트·취소/저장과 실제 입력 적용을 완료했습니다. 최근 기능 기준은 게임의 [입력 설정](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/controller-setup-flow.md)과 [전 선수 품질](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/roster-athlete-art-review.md)입니다. 위의 과거 검증 수치는 해당 커밋 기록이며 최신 결과로 대체해 주장하지 않습니다.
+게임 PR24까지 main에 반영됐습니다. Mac 일반 창의 시작 메뉴·선수 선택·입력 설정 마우스20회가 통과했으며 키보드 경기 입력도 별도 확인했습니다. 국기·국경선·기기별 상세·키 배치·테스트·취소/저장과 실제 입력 적용을 완료했습니다. 최근 기능 기준은 게임의 [입력 설정](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/controller-setup-flow.md)과 [전 선수 품질](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/roster-athlete-art-review.md)입니다. 위의 과거 검증 수치는 해당 커밋 기록이며 최신 결과로 대체해 주장하지 않습니다.
 
 실물 장비를 유예한 새 소프트웨어는 제품별 PR로 검토한 뒤 의존성 순서대로 스쿼시 병합했습니다. [작업 범위·병합된 main 커밋·검증 구분](software-completion.md)을 확인하세요. 게임의 protocol/SDK 패키지도 병합된 커밋으로 고정했습니다. 과거 검증 파일의 소스·배포 체크섬은 그대로 보존하고 새 main 확인은 별도 기록합니다.
+
+## 컨트롤러 후속 PR
+
+main 기록과 이번 검토 브랜치를 구분한다. [컨트롤러 준비 상태](controller-readiness.md)는 센서 없는 LINK_PROBE/REPLY, 펌웨어 송신 큐·버튼·구간별 모션과 녹화 프로필, 게임 통신 확인 화면과 최신 배포판의 소스/검증을 기록한다. 기본 자동 세 동작과 선택 모드·합성8프로필 검사를 실제 사람8제스처 인식 성공으로 바꾸지 않는다. 외장 IMU 모델·배선·장착 축과 실제 정확도는 유예한다.
+
+### NU-54 실물 BLE 후속 확인
+
+SW3 전체 LED 두 번 점멸과 참고 서비스 광고를 확인하고, 실제 GATT 연결·Notify·WriteWithResponse·device.info 응답2회(211.32/209.66ms)를 검증했다. 현재 링크의 정보 조회는 NOT_PERMITTED로 거부됐으므로 SMP/OS 본딩 완료와 구분한다. 테니스용 UUID/20바이트·실제 Unity 센서 입력은 별도다. [정확한 근거와 경계](controller-readiness.md)를 따른다. 기존 펌웨어와 기기 저장 설정은 보존했다.

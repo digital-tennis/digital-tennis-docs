@@ -1,12 +1,12 @@
 # 제품별 저장소와 책임
 
-기존 계획의 6개 제품을 Digital Tennis 이름으로 옮기고 문서 저장소를 추가합니다. 실제 기존 저장소를 이전한 것이 아니라 계획상의 이름을 확정한 것입니다.
+7개 제품을 기능별로 분리합니다. 각 저장소의 루트 README가 해당 제품의 소개·실행·기여 시작점이며, 아래 역할 A/B/C는 초기 12일·3인 계획의 분담입니다.
 
 | 저장소 | 책임 | 담당 역할 | 개발 과제 |
 | --- | --- | --- | --- |
 | [digital-tennis-firmware](https://github.com/digital-tennis/digital-tennis-firmware) | NU40-DK에 별도로 부착한 IMU의 데이터 획득, 보정, 스윙 인식, BLE 전송 | A | [상세 과제](../products/digital-tennis-firmware.md) |
 | [digital-tennis-protocol](https://github.com/digital-tennis/digital-tennis-protocol) | 보드와 PC가 공유하는 바이너리 규격, C 및 C# 코덱과 테스트 벡터 | C / A 검토 | [상세 과제](../products/digital-tennis-protocol.md) |
-| [digital-tennis-ble-unity](https://github.com/digital-tennis/digital-tennis-ble-unity) | BLE 검색·연결·재연결, 메인 스레드 입력 전달, 가상 컨트롤러 | C / A 검토 | [상세 과제](../products/digital-tennis-ble-unity.md) |
+| [digital-tennis-ble-unity](https://github.com/digital-tennis/digital-tennis-ble-unity) | macOS·Windows BLE 검색·OS 본딩·연결 수명, 패킷 검증과 정규화 입력 | C / A 검토 | [상세 과제](../products/digital-tennis-ble-unity.md) |
 | [digital-tennis-game](https://github.com/digital-tennis/digital-tennis-game) | 공·코트·서브·점수, 자동 이동, 1인 플레이, 온라인 2인 플레이 | B | [상세 과제](../products/digital-tennis-game.md) |
 | [digital-tennis-ai](https://github.com/digital-tennis/digital-tennis-ai) | 예상 착지점, 이동·타격 의사결정, 하·중·상 난이도 | B | [상세 과제](../products/digital-tennis-ai.md) |
 | [digital-tennis-match-server](https://github.com/digital-tennis/digital-tennis-match-server) | 6자리 방 코드, 2인 방, WebSocket 시그널링, 릴레이 | C / A 검토 | [상세 과제](../products/digital-tennis-match-server.md) |
@@ -40,10 +40,10 @@
 - `ai`는 Unity 씬·GameObject 없이 상태를 받아 의사결정만 반환합니다.
 - `game`은 호스트 권위의 공·득점과 `MatchClient`, P2P 전송 어댑터를 소유합니다.
 - `match-server`는 같은 방의 메시지만 전달하며 테니스 물리를 계산하지 않습니다.
-- `docs`는 계약과 계획의 기준입니다. 제품별 실행 명령은 구현이 생기면 각 제품 README에 기록합니다.
+- `docs`는 통합 계약·과제·검증 안내를 연결합니다. 제품별 현재 실행 명령은 각 제품 README를 따릅니다.
 
 ## 의존성 사용 방법
 
-D1에 채택할 툴과 버전을 결정합니다. C 코덱은 protocol의 특정 태그·커밋으로 참조하고, C# protocol·BLE·AI는 선택한 Unity 환경에서 사용 가능한 패키지 구조로 고정합니다. `main`의 변화에 자동으로 따라가지 않도록 소비 제품에 버전과 커밋을 기록합니다. 별도의 온라인 규격은 docs에서 관리하며 BLE 패킷과 혼용하지 않습니다.
+현재 C 코덱은 CMake의 고정 Git 커밋으로, C# protocol·BLE·AI는 Git UPM의 고정 커밋으로 소비합니다. 최초 D1의 도구 선택 과제는 원래 WBS에 보존합니다. `main`의 변화에 자동으로 따라가지 않도록 소비 제품에 버전과 커밋을 기록합니다. 별도의 온라인 규격은 docs에서 관리하며 BLE 패킷과 혼용하지 않습니다.
 
 각 제품은 하드웨어나 다른 제품 없이 가짜 입력으로 단독 검증하는 방법을 제공해야 합니다. 게임 동작을 제품 간에 복사하지 않습니다.
