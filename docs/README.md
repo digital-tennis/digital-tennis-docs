@@ -38,3 +38,7 @@ Digital Tennis는 키보드와 BLE 모션 라켓으로 즐기는 Unity PC 테니
 - 최초 계획·과제·이력은 보존합니다. 현재 실행 방법은 각 제품의 루트 README를 우선합니다.
 
 전체 탐색은 [목차](SUMMARY.md)를 사용하세요.
+
+## 후속 개발 인수
+
+[외장 IMU를 가진 개발자의 수정·검증 순서](guides/imu-handoff.md)와 [강화학습 AI의 실제 학습/실행 범위](project/learned-ai.md)를 확인하세요.
