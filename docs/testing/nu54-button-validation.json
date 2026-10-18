@@ -67,5 +67,24 @@
     "button-backhand.json": "abfdaeac4b782ea5e1bea5723733729766b96de14363d00bdbcb6bb60e324b65",
     "button-skill.png": "f48a74e20b99017cdd79efc080201d440d4b48fdcbfd61f9927b5e2e0e444d3b",
     "button-skill.json": "bd343a03323fa99affa664adcff962067ddb64322ebc21b502e03b072a13a445"
+  },
+  "mainIntegration": {
+    "date": "2026-10-19",
+    "mergedCommits": {
+      "protocol": "a5ca8b516e33b277c22f9c3ae0cb5cd60ce65498",
+      "firmware": "541097e8ac5affa969f572bf839662f6a7d99d96",
+      "sdk": "0b1847680e9bedcfa4f2bcce1f77d7bc4df83efa",
+      "game": "0d7c19eaaceb2e09bfad8b702d6a161d4c5f80b5"
+    },
+    "dependencyPinsUpdated": true,
+    "priorPhysicalSourcesPreserved": true,
+    "freshDependencyChecks": {
+      "firmwareHostSuites": 2,
+      "sdkChecks": 58,
+      "unityProjectCheck": "passed",
+      "unityEditPassed": 190,
+      "unityControllerScenePassed": 2
+    },
+    "imuValidation": "deferred"
   }
 }

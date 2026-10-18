@@ -80,3 +80,16 @@ Game5203b381의 clean 소스로 Development/AllowDebugging을 끄고 Mac·Window
 R05 계약의 명시적 버튼 프로필을 적용했다. 실제 SW1/2/3/4가 서브/포핸드/백핸드/스킬로 전달됐고, 설정 테스트4입력 확인 후에만 저장했다. 일반 Mac1인 경기에서 서브·포핸드7회·백핸드2회·정상 충전 후 스킬2회를 확인했다. 설정 중 타격/득점0, 런타임 예외0, 센서 보정은 거짓이다. 재고/물리 주입이나 모의 라디오는 실물 근거에 사용하지 않았다. [후속 기계 판독 결과](../testing/nu54-button-validation.json)를 확인한다.
 
 통합 검사 결과는 protocol2,065사례·SDK58·firmware host2모음/NU40·NU54빌드/오프라인 설치 경계 검사·Unity Edit190/Play44통과/NullGPU1제외다. IMU 프로필은 여전히 보정 ACK와 실제 ready를 요구한다. NU40-DK+별도 외장 IMU와 최초12일·3명 계획은 유지한다. [게임의 후속 버튼 입력 PR](https://github.com/digital-tennis/digital-tennis-game/pull/26)과 [실제 화면·원본](https://github.com/digital-tennis/digital-tennis-game/blob/22f92579d9f508a05b4ec749c2852b28503e5080/docs/nu54-buttons.md)에 연결하며 위 R02/R03의 최초 실기 소스는 덮어쓰지 않는다.
+
+## 45 버튼 모드 main 통합
+
+2026-10-19에 protocol → firmware·SDK → game 순서로 아래 PR을 스쿼시 병합했다. 게임의 manifest와 Unity 생성 잠금 파일, 펌웨어의 원격 protocol 참조, SDK CI의 protocol 참조를 실제 main 병합 커밋으로 갱신했다. 위 §40의 최초 실기 소스 해시는 당시 검증 기록으로 보존한다.
+
+| 제품 | PR | main 병합 커밋 |
+| --- | --- | --- |
+| digital-tennis-protocol | [#3](https://github.com/digital-tennis/digital-tennis-protocol/pull/3) | [a5ca8b516e33](https://github.com/digital-tennis/digital-tennis-protocol/commit/a5ca8b516e33b277c22f9c3ae0cb5cd60ce65498) |
+| digital-tennis-firmware | [#3](https://github.com/digital-tennis/digital-tennis-firmware/pull/3) | [541097e8ac5a](https://github.com/digital-tennis/digital-tennis-firmware/commit/541097e8ac5affa969f572bf839662f6a7d99d96) |
+| digital-tennis-ble-unity | [#3](https://github.com/digital-tennis/digital-tennis-ble-unity/pull/3) | [0b1847680e9b](https://github.com/digital-tennis/digital-tennis-ble-unity/commit/0b1847680e9bedcfa4f2bcce1f77d7bc4df83efa) |
+| digital-tennis-game | [#26](https://github.com/digital-tennis/digital-tennis-game/pull/26) | [0d7c19eaaceb](https://github.com/digital-tennis/digital-tennis-game/commit/0d7c19eaaceb2e09bfad8b702d6a161d4c5f80b5) |
+
+새 의존성 조합에서 firmware host2모음·SDK58검사·Unity 프로젝트 검사·Edit190/190·컨트롤러 장면2/2를 다시 통과했다. 설치 경계 검사는 하드웨어 접근 없이 실행했다. 설치된 NU-54의 버튼 런타임과 병합된 실행 코드는 동일하며 기존 본딩을 유지한다. 새 main의 일반 Mac 창 실행·실물 버튼 재검수는 이전 실기 기록과 구분하여 수행한다. IMU 실기 검증은 계속 보류한다.
