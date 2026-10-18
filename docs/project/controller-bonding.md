@@ -1,38 +1,52 @@
 # DT-TR-23-10-00 · 실물 컨트롤러 본딩 검수
 
-문서 개정 R01, 2026-10-19, 검토본. 실제 제품은 NU40-DK+별도 외장 IMU다. 현재 연결된 NU-54는 센서 없는 BLE 검증용이다. [책임 분리와 ADR](architecture.md), [통신 계약](../contracts/controller-protocol.md)을 따른다.
+문서 개정 **R02**, 2026-10-19, 검토본. 실제 제품은 **NU40-DK+별도 외장 IMU**이며 이번 실기 기기는 센서 없는 NU-54다. [책임 분리와 ADR](architecture.md), [통신 계약](../contracts/controller-protocol.md)을 따른다.
 
-## 현재 결과
+## 00 현재 결과
 
-사용자 승인으로 테니스 펌웨어를 NU-54에 설치했다. 이전 앱의 변경 대상 코드만 비공개 백업했고 기존 지갑 저장영역은 읽거나 지우지 않았다. Unity 무선 상세에서 Digital Tennis NU54 광고 검색과 연결 요청을 수행했다. 최초 시험은 인증된 보안 Level4 요구와 화면 없는 보드의 기능 불일치로 실패했다. 이를 본딩 성공으로 기록하지 않는다.
+**Mac 일반 Unity 창에서 실제 암호화·본딩, 테니스 프로토콜 왕복, 보드 재시작 후 본딩 재사용을 통과했다.** 센서가 없어 ready/calibrated는 false이고 동작 테스트·설정 저장은 계속 차단된다.
 
-사용자는 LE Secure Connections + Just Works(L2) 방식 적용을 명시적으로 승인했다. PIN/숫자 대조 MITM 인증은 없지만 암호화·본딩을 요구한다. 수정 펌웨어의 코드 대조/설치를 통과했고, 기존 앱 캐시와 분리된 Tennis identity1을 사용한다. 최초 보호된 CCC 시도는 ATT 오류15(암호화 미완료)·SMP timeout으로 끝났다. SDK는 이를 성공으로 바꾸지 않으며 OS 처리 동안 연결을 조기에 끊지 않도록 제한 재시도를 추가했다. 현재 Mac 수동 잠금 해제를 기다려 일반 창의 OS 승인·재접속 검수를 이어간다. **실물 본딩과 테니스 메시지 왕복은 아직 미완료**이며 센서 실기도 계속 유예한다.
+| 확인 항목 | 실제 결과 |
+| --- | --- |
+| 메뉴·설정 | 실제 키보드로 시작 메뉴→설정→입력 기기→무선 상세 진입 |
+| 실제 검색 | clean 빌드 첫 검색은 0기기, 명시적 재검색에서 알려진 Tennis 기기 발견 |
+| 연결 | 현재 상대의 보호된 보안 상태 확인 후 Connected |
+| 테니스 메시지 | 현재 연결·nonce에 대응하는 LINK_PROBE/REPLY 성공 |
+| 센서 없는 보정 요청 | 실패 ACK, ready/calibrated=false, 세 동작 테스트·저장 차단 |
+| 연결 해제·재연결 | 이전 통신 확인을 폐기하고 새 연결에서 다시 왕복 성공 |
+| 보드 일반 reset | 단절 후 저장된 본딩으로 재연결, 새 probe 성공 |
+| 취소 | 기존 Keyboard 유지, 경기 타격·득점·입력 0 |
 
-## 완료 증거에 필요한 항목
+최종 일반 창은 소스 **bf86e40147d1acee1a03e1139494759054ab0317**, Unity6000.3.26f1, Built-in/Mono의 깨끗한 새 검수 빌드다. 실제 네이티브 backend와 키보드를 유지했고 관찰 옵션만 사용했다. 모의 전송·가짜 기기·UI callback 직접 호출·저장 게이트 우회는 사용하지 않았다. 세부 원본 PNG·JSON과 해시는 [기계 판독 결과](../testing/controller-bonding-validation.json)에서 추적한다. [실제 게임 화면·원본 자료](https://github.com/digital-tennis/digital-tennis-game/blob/7af42a20b42975b21a41ab3f7055c6846fb510e9/docs/controller-bonding.md)를 함께 확인한다.
 
-현재 peer의 보호된4바이트 보안 읽기, 같은 nonce의20바이트 LINK_REPLY, Unity 통신 성공 화면, 센서 미준비/저장 차단, 해제/재접속 및 보드 재시작 후 키 재사용을 각각 기록한다. 기기 주소/UUID·키·PIN·원시 지갑 응답·백업은 공개하지 않는다.
+## 10 보안 근거와 제한
 
-[README/라이선스 운영](open-source.md), [펌웨어 빌드·설치 근거](https://github.com/digital-tennis/digital-tennis-firmware/blob/codex/controller-readiness/docs/bonding-build-validation.json)를 함께 확인한다.
+별도 native 진단은 보호된 4바이트 상태의 **Level2/bonded/SC**와 실제 20바이트 응답을 확인했다. 해당 왕복 52.131ms는 단일 관찰값이다. macOS Bluetooth에서도 알려진 Tennis 기기가 연결됨으로 표시됐다. OS 키 데이터베이스를 직접 열람하거나 기기 UUID·주소·키·PIN을 공개하지 않았다.
 
+현재 시험 정책은 승인된 **LE Secure Connections + Just Works**다. 암호화·본딩은 요구하지만 PIN/숫자 대조를 통한 최초 페어링 중간자 방어는 없다. 이번 성공 중 새로운 PIN/숫자 대조 팝업은 나타나지 않았으므로 팝업을 조작한 검증으로 기록하지 않는다.
 
-## 10 소프트웨어와 실제 라디오의 경계
+보드 reset은 flash·저장영역 읽기·초기화 없이 수행했다. 이전에 승인받아 설치한 Tennis 이미지와 분리된 영속 identity1을 유지한다. 검증 종료 후 임시 교체한 게임 앱은 원래 백업으로 복원했고 본딩은 유지했다.
 
-최종 Unity 검사는 Edit189/189, Play43통과·실패0·NullGPU1제외이며 별도 GPU 마우스1/1·패킷 장면1/1을 구분한다. protocol 이벤트2,045·보안66,046사례, SDK44·AI25·서버28개 검사와 firmware host2모음/보드3구성이 통과했다. GitHub의 허가된 Unity job은 설정상 건너뛰며 이 결과는 로컬 Unity 검사다.
+NU40-DK 실물 GPIO/BLE, 별도 외장 IMU의 배선·장착·보정·인식률, 물리 Windows와 두 물리 PC/WAN은 남아 있다. 본딩이 없는 새 PC의 최초 승인 팝업 조작도 별도 항목이다. 원래12일·3명 범위를 보존하며 센서 없는 성공을 모션 경기 성공으로 표시하지 않는다.
 
-동일한 게임 SDK DLL을 Unity 동봉 Mono에서 실행한 독립 진단은 실제 NU54 검색1기기·한글 native 메시지 수신을 통과했다. 보안 연결은60초 뒤 Error/Bond=false로 종료돼 입력을 열지 않았다. 일반 창의 일부0기기 결과와 독립 진단의1기기 결과를 구분한다. 추가한 선택적 진단으로 Mac 잠금 해제 후 최신 일반 창 경로를 확인해야 하며, 독립 Mono 실행을 Unity UI 연결 성공으로 바꾸어 표기하지 않는다.
+## 15 이전 시도와 소프트웨어 근거
 
-Tennis identity는 보드 재시작 전후 같았으나 이는 identity 저장의 근거다. 암호화/bond 성공·bond 키 재사용은 별도이며 아직 증거가 없다. Mac의 OS 키 DB·키·PIN·주소를 공개하거나 조회하지 않는다. [기계가 읽는 결과](../testing/controller-bonding-validation.json)를 확인한다.
+이전 R01의 Level4 기능 불일치·ATT15·SMP timeout, 잠금 상태·일부 검색0과 독립 Mono 검색/보안 timeout은 당시 실패 이력으로 보존한다. 이번 잠금 해제 후 clean 일반 창 실행으로 실제 본딩·왕복·재시작 재사용 미검증을 해소했다. 과거 실패 객체는 기계 판독 결과의 `previousUnverifiedAttempt`에 남긴다.
+
+기존 소프트웨어 근거는 Unity Edit189/189·Play43통과/NullGPU1제외·별도 GPU마우스1/1·패킷장면1/1, protocol 이벤트2,045/보안66,046사례, SDK44·AI25·서버28개, firmware host2모음/보드3구성이다. 실제 라디오 결과와 자동 검사·교차 빌드를 구분한다. 이번 후속 변경은 실기 자료와 지원 상태 문서이며 런타임 코드를 수정하지 않았다.
+
+[README/라이선스 운영](open-source.md)과 [펌웨어 빌드·설치 근거](https://github.com/digital-tennis/digital-tennis-firmware/pull/2)를 함께 확인한다.
 
 ## 20 검토 PR
 
 모두 draft이며 병합하지 않았다. protocol→firmware/SDK→game→docs 순서로 검토하고, 스쿼시 병합 후 소비 SHA를 새 병합 커밋으로 다시 고정한다. AI는 README/라이선스만 변경했다.
 
-| 제품 | PR | 검토 소스 |
+| 제품 | PR | 검증한 실행 코드 |
 | --- | --- | --- |
 | digital-tennis-protocol | [#2](https://github.com/digital-tennis/digital-tennis-protocol/pull/2) | 12dae689fd9b |
 | digital-tennis-firmware | [#2](https://github.com/digital-tennis/digital-tennis-firmware/pull/2) | 4a55c57146ea |
 | digital-tennis-ble-unity | [#2](https://github.com/digital-tennis/digital-tennis-ble-unity/pull/2) | a7efc76b5d53 |
-| digital-tennis-game | [#25](https://github.com/digital-tennis/digital-tennis-game/pull/25) | 5203b3813312 |
+| digital-tennis-game | [#25](https://github.com/digital-tennis/digital-tennis-game/pull/25) | bf86e40147d1 (clean 일반 창) |
 | digital-tennis-ai | [#4](https://github.com/digital-tennis/digital-tennis-ai/pull/4) | 7053a4e74c25 |
 | digital-tennis-match-server | [#6](https://github.com/digital-tennis/digital-tennis-match-server/pull/6) | d064ade0c60a |
 | digital-tennis-docs | [#3](https://github.com/digital-tennis/digital-tennis-docs/pull/3) | 이 문서 PR |

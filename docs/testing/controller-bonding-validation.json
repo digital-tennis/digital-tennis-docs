@@ -1,13 +1,13 @@
 {
   "date": "2026-10-19",
-  "verdict": "Software checks passed; real OS bonding and Unity link round trip remain unverified",
+  "verdict": "PASS: actual NU54 encrypted OS bond, Tennis LINK_REPLY and bond reuse after board reset in clean normal Unity game",
   "primaryHardware": "NU40-DK + separately attached external IMU",
   "temporaryPhysicalHardware": "NU54",
   "sourceRevisions": {
     "protocol": "12dae689fd9b25187426829c606529508c100e65",
     "firmware": "4a55c57146ea6ca992daf25b2223d192c5682620",
     "ble-unity": "a7efc76b5d53d1ded2ebf7f9f07f949939158e92",
-    "game": "5203b38133124a28280338c4b3a500f291a886ed",
+    "game": "bf86e40147d1acee1a03e1139494759054ab0317",
     "ai": "7053a4e74c25b55cb14db2ef6d975fbd5e7593b6",
     "match-server": "d064ade0c60a526024b8e2793e1dcbc5d12567a3"
   },
@@ -43,24 +43,34 @@
     "gameDllInBundledMonoScanFound": 1,
     "unicodeAndNativePipeInMono": true,
     "dedicatedIdentitySurvivedReset": true,
-    "encryptedBondConfirmed": false,
-    "tennisLinkReply": false,
-    "bondReusedAfterBoardReset": false,
+    "encryptedBondConfirmed": true,
+    "tennisLinkReply": true,
+    "bondReusedAfterBoardReset": true,
     "latestMonoAttempt": "Discovery succeeded; pairing timed out after60s; Error/Bond=false; no input opened",
-    "lastNormalWindow": "Earlier attempts included discovery/connection request and later0-device results. Latest build awaits manual Mac unlock and UI recheck.",
+    "lastNormalWindow": "Completed after manual unlock; first scan zero, explicit retry found actual device",
     "osKeyDatabaseInspected": false,
-    "lastErrors": [
+    "imuValidation": "deferred",
+    "securityLevel": 2,
+    "secureConnections": true,
+    "nativeRoundTripMs": 52.131,
+    "sensorReady": false,
+    "calibrated": false,
+    "latestNormalWindow": "Clean bf86e401 normal Mac game: actual discovery, bonded connection, probe, sensor-absent ACK rejection, reset/reconnect/fresh probe, cancel kept Keyboard",
+    "osBluetoothSettingsConnected": true,
+    "freshApprovalDialogInteractionVerified": false,
+    "calibrationNotReadySaveBlocked": true,
+    "noMockOrUiCallbackInjection": true,
+    "runtimeExceptions": 0,
+    "historicalErrors": [
       "ATT15 insufficient encryption",
       "SMP timeout"
     ],
-    "imuValidation": "deferred"
+    "lastErrors": []
   },
   "remaining": [
-    "Manual Mac unlock and OS approval in normal game window",
-    "Latest Unity discovery/secure link/probe/calibration-not-ready/save-block checks",
-    "Disconnect/reconnect and board restart bond reuse",
-    "NU40 physical GPIO and external IMU",
-    "Physical Windows and two-PC/WAN"
+    "NU40 physical GPIO/BLE and separately attached external IMU",
+    "Physical Windows and two physical PCs/WAN",
+    "Fresh unbonded-PC approval-dialog interaction"
   ],
   "prs": [
     {
@@ -128,5 +138,67 @@
       "allowDebugging": false,
       "nativeNotices": 32
     }
-  ]
+  ],
+  "previousUnverifiedAttempt": {
+    "verdict": "Software checks passed; real OS bonding and Unity link round trip remain unverified",
+    "realRadio": {
+      "serviceAdvertisingFound": true,
+      "isolatedDotnetScanFound": 1,
+      "gameDllInBundledMonoScanFound": 1,
+      "unicodeAndNativePipeInMono": true,
+      "dedicatedIdentitySurvivedReset": true,
+      "encryptedBondConfirmed": false,
+      "tennisLinkReply": false,
+      "bondReusedAfterBoardReset": false,
+      "latestMonoAttempt": "Discovery succeeded; pairing timed out after60s; Error/Bond=false; no input opened",
+      "lastNormalWindow": "Earlier attempts included discovery/connection request and later0-device results. Latest build awaits manual Mac unlock and UI recheck.",
+      "osKeyDatabaseInspected": false,
+      "lastErrors": [
+        "ATT15 insufficient encryption",
+        "SMP timeout"
+      ],
+      "imuValidation": "deferred"
+    }
+  },
+  "normalWindowBuild": {
+    "configuration": "development",
+    "platform": "StandaloneOSX",
+    "unity": "6000.3.26f1",
+    "sourceCommit": "bf86e40147d1acee1a03e1139494759054ab0317",
+    "development": true,
+    "allowDebugging": true,
+    "dirtyWorkingTree": false,
+    "scenes": [
+      "Assets/Scenes/FrontEnd.unity",
+      "Assets/Scenes/SinglePlayerCourt.unity",
+      "Assets/Scenes/MatchCourt.unity",
+      "Assets/Scenes/DevelopmentCourt.unity"
+    ]
+  },
+  "normalWindowTests": {
+    "actualDiscovery": true,
+    "encryptedBondVerified": true,
+    "linkRoundTrip": true,
+    "sensorAbsentCalibrationRejected": true,
+    "saveBlockedWithoutSensorTest": true,
+    "disconnectClearedLink": true,
+    "bondReusedAfterBoardReset": true,
+    "freshProbeAfterReset": true,
+    "cancelKeptKeyboard": true,
+    "gameplayEventsDuringSetup": 0,
+    "runtimeExceptions": 0
+  },
+  "nativeDiagnostic": {
+    "passed": true,
+    "connected": true,
+    "reply": true,
+    "bondVerified": true,
+    "securityLevel": 2,
+    "secureConnections": true,
+    "roundTripMs": 52.131,
+    "sensorReady": false,
+    "calibrated": false
+  },
+  "normalWindowEvidence": "https://github.com/digital-tennis/digital-tennis-game/blob/7af42a20b42975b21a41ab3f7055c6846fb510e9/docs/evidence/ble-bonding-2026-10-19/validation.json",
+  "documentationEvidenceCommit": "7af42a20b42975b21a41ab3f7055c6846fb510e9"
 }
