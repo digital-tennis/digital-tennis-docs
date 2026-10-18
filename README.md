@@ -1,18 +1,38 @@
-# Digital Tennis 개발 문서
+# Digital Tennis · 개발 문서와 통합 규격
 
-NU40-DK와 **별도 부착형 외장 IMU**를 라켓 컨트롤러로 사용하고, Unity PC 테니스 게임에서 1인 AI 플레이와 온라인 2인 플레이를 제공하는 프로젝트입니다. 개발 기간은 **12일**, 개발자는 **3명**, 총 공수는 **36인일**입니다.
+전체 제품의 책임·초보자 과제·12일 WBS·계약·검수 근거를 GitBook에 연결 가능한 문서로 관리한다.
 
-게임 main은 실제 P2P·릴레이 복구, 네이티브 BLE SDK와 입력 설정, 일반 Mac 창 키보드·마우스 검증을 포함합니다. 이번 후속 PR은 펌웨어 송신·버튼·모션과 센서 없는 BLE 통신 확인을 보완합니다. 외장 IMU 정확도와 Windows·두 PC 실기는 별도입니다. [현재 구현과 검증 범위](docs/project/implementation-status.md)를 먼저 확인하세요.
+전체 제품은 NU40-DK에 **별도 외장 IMU**를 부착하는 라켓 컨트롤러와 Unity PC 테니스 게임으로 구성한다. 최초 계획은 **12일·3명**이다.
 
-- [컨트롤러 후속 검수·최신 배포판](docs/project/controller-readiness.md)
-- [처음 읽는 문서](docs/README.md)
-- [제품과 저장소 책임](docs/project/repositories.md)
-- [12일 일정과 72개 반일 작업 슬롯](docs/planning/wbs.md)
-- [제품별 상세 개발 과제](docs/products/README.md)
-- [GitBook 무료 플랜 연결](docs/guides/gitbook.md)
-- [컨트롤러 통신 규격](docs/contracts/controller-protocol.md)
-- [온라인 통신 규격](docs/contracts/online-protocol.md)
+## 주요 기능
 
-GitBook에서는 하나의 Space에 `docs/`를 연결합니다. 저장소 루트의 `.gitbook.yaml`은 루트에서 연결하는 방식, `docs/.gitbook.yaml`은 `docs/`를 Space 디렉터리로 매핑하는 방식을 지원합니다. 문서 내용과 목차는 `docs/README.md`, `docs/SUMMARY.md`에 있습니다.
+- 7개 제품의 상황/입력/출력/예외/완료 기준
+- 컨트롤러·온라인 계약과 실제 검증/미검증 구분
+- GitBook 구조·로컬 링크·원래 일정 자동 검사
 
-로고는 [500×500 업로드 파일](docs/assets/digital-tennis-github-avatar-500.png)과 [원본](docs/assets/digital-tennis-logo-original.png)으로 제공됩니다.
+## 빠른 시작
+
+Python3. GitBook 계정 게시/권한은 저장소 검사와 별도다.
+
+```sh
+python3 tools/check-docs.py
+python3 tools/check_docs.py
+```
+
+## 책임과 현재 범위
+
+원래12일·3인·36인일,37개 과제와72개 반일 슬롯을 보존한다. 루트 .gitbook.yaml은 docs/를 가리키며 docs/.gitbook.yaml은 Space를 docs/에 매핑할 때 쓴다. 실제 게시·실물 검증을 문서 검사 성공으로 대신하지 않는다.
+
+## 구조와 문서
+
+`docs/project/`: 현황/아키텍처 · `docs/products/`: 과제 · `docs/contracts/`: 계약 · `docs/planning/`: WBS · `docs/testing/`: 근거
+
+[처음 읽기](docs/README.md), [목차](docs/SUMMARY.md), [GitBook 연결](docs/guides/gitbook.md), [컨트롤러 검수](docs/project/controller-readiness.md)
+
+## 도움말과 기여
+
+재현 가능한 문제는 [이슈](https://github.com/digital-tennis/digital-tennis-docs/issues)로 남긴다. 관리 주체는 [Digital Tennis](https://github.com/digital-tennis)이며 [기여 안내](CONTRIBUTING.md)를 따른다. 검증 커밋을 고정하고 실제 장치 성공·모의 검사·교차 빌드를 구분한다.
+
+## 라이선스
+
+프로젝트 자체 코드·문서는 **[Apache-2.0](LICENSE)**이다. [NOTICE](NOTICE)와 [외부 코드·자산 고지](THIRD_PARTY_NOTICES.md)를 함께 확인한다. 외부 자산에 Apache-2.0을 덮어쓰지 않는다.

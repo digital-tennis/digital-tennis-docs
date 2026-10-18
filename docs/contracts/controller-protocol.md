@@ -1,6 +1,20 @@
-# 컨트롤러 통신 규격 v1/v2
+# DT-ICD-23-10-00 · 컨트롤러 계약 요약
 
-v1 배치를 보존하면서 v2의 명시적 의도를 추가한 계약입니다. [정본 코덱·규격 PR](https://github.com/digital-tennis/digital-tennis-protocol/pull/1)을 함께 확인합니다. D1에 A/C가 검토하고 동일 테스트 벡터로 고정합니다. 게임 규칙과 온라인 메시지는 포함하지 않습니다.
+## 00 문서 관리
+
+| 항목 | 값 |
+| --- | --- |
+| 문서 ID / 개정 | DT-ICD-23-10-00 / R04 요약 |
+| 발행 / 상태 | 2026-10-18 / PR 검토본 |
+| 책임·소비 제품 | protocol / firmware·ble-unity·game |
+| 적용성 | NU40-DK + 별도 외장 IMU; NU-54는 임시 BLE 검증용 |
+| 정본 | [protocol ICD R04](https://github.com/digital-tennis/digital-tennis-protocol/blob/12dae689fd9b25187426829c606529508c100e65/spec/controller-v2.md)와 C/C# 코덱/벡터 |
+| 유효 절 | GATT·보안 R04, 패킷/순번 R03 보존, 책임 R04 |
+
+ATA iSpec2200에서 영감을 받은 프로젝트 자체 문서 관리 형식이다. DT 번호는 공식 항공기 챕터가 아니며 정식 iSpec2200 적합성/SGML 호환을 주장하지 않는다. R04는 기존20바이트를 보존하고 별도4바이트 보안 읽기를 추가한다.
+
+
+v1 배치를 보존하면서 v2의 명시적 의도를 추가한 계약입니다. [정본 코덱·규격 PR](https://github.com/digital-tennis/digital-tennis-protocol/pull/2)을 함께 확인합니다. D1에 A/C가 검토하고 동일 테스트 벡터로 고정합니다. 게임 규칙과 온라인 메시지는 포함하지 않습니다.
 
 ## GATT와 전송
 
@@ -8,9 +22,16 @@ v1 배치를 보존하면서 v2의 명시적 의도를 추가한 계약입니다
 | --- | --- | --- |
 | 컨트롤러 Service | 6d7c1000-9d40-4cb7-a381-5e908be0a001 | 사용자 정의 서비스 |
 | 이벤트 TX | 6d7c1001-9d40-4cb7-a381-5e908be0a001 | Notify |
-| 명령 RX | 6d7c1002-9d40-4cb7-a381-5e908be0a001 | Write with response |
+| 명령 RX | 6d7c1002-9d40-4cb7-a381-5e908be0a001 | Write with response·암호화/본딩 |
+| 보안 상태 | 6d7c1003-9d40-4cb7-a381-5e908be0a001 | Read·암호화·아래4바이트 |
 
 한 알림은 정확히 20바이트입니다. 이벤트 TX는 SWING·BUTTON·STATUS·ACK를, 명령 RX는 CALIBRATE와 v2 LINK_PROBE를 받습니다. v2 LINK_REPLY는 이벤트 TX로 돌아옵니다. CCCD 구독이 성공한 연결에만 Notify합니다. 센서 원시값은 우선 USB/시리얼 디버그로 확인하며 임의로 이벤트 패킷 안에 끼워 넣지 않습니다.
+
+### 보안 읽기와 연결 완료
+
+`[0x44, schema1, securityLevel1..4, flags]`이며 flags bit0=현재 peer bond, bit1=LE Secure Connections, 나머지0이다. level1의 flags는0이어야 한다. `44 01 02 03`은 암호화+bond+SC다. SDK는 현재 peer·연결에서 유효한 level≥2/bond=1을 확인한 뒤에만 연결 완료를 표시한다. 단순 connected·다른 peer·보안 특성 없음은 성공이 아니다. Windows는 OS IsPaired도 확인하고, Mac은 보호된 GATT와 기기 보고를 확인한다. 공개 API에 없는 OS key DB를 읽었다고 주장하지 않는다.
+
+firmware가 보정/액션 판정, protocol이 wire, SDK가 OS/코덱/중복, game이 타격·점수 판정을 소유한다. [책임·판정 위치 ADR](../project/architecture.md), [실물 기록](../project/controller-bonding.md)을 따른다.
 
 ## 패킷 배치
 
@@ -49,7 +70,7 @@ CRC 매개변수는 polynomial=0x07, init=0x00, refin=false, refout=false, xorou
 
 검토 브랜치의 v2 LINK_PROBE/REPLY는 센서 연결/보정과 독립된 PC↔기기 왕복 검사다. 두 타입의 kind·power·각도는0, eventId는0이 아닌 nonce다. PROBE의 flags·deviceTimeMs는0, battery는255이고 REPLY는 실제 센서 flags·기기 시각을 보고한다. v1에서는 새 타입을 거부한다. PC는 현재 연결에서 같은 nonce 응답을2초 안에 받을 때만 성공으로 표시한다. CRC가 맞아도 이전 연결/다른 nonce/늦은 응답은 성공이 아니다. 왕복 성공으로 보정·동작 테스트·설정 저장을 허용하지 않는다.
 
-정본은 protocol d9a36826afbafa27a0e276cc53e44c904d05be53의 spec/controller-v2.md와 공통 벡터다. [후속 검수와 실기 경계](../project/controller-readiness.md)를 함께 읽는다.
+정본은 protocol12dae689fd9b25187426829c606529508c100e65의 spec/controller-v2.md와 공통 벡터다. [후속 검수와 실기 경계](../project/controller-readiness.md)를 함께 읽는다.
 
 ## 순번과 중복
 
