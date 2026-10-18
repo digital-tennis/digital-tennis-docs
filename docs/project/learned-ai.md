@@ -29,4 +29,6 @@
 
 별도로 깨끗한 Mac 빌드bd8037a의 일반 창에서 실제 키보드 서브3회 뒤 모델 판단3회·AI 반환3회를 확인했습니다. 이 일반 창에는 가상 사람 source·물리/점수/재고 주입을 사용하지 않았습니다. 추가 보드 버튼이나 IMU 시험은 하지 않았고 게임은 키보드 설정으로 일시정지해 두었습니다.
 
-[게임 화면·빌드 소스·해시 기록](https://github.com/digital-tennis/digital-tennis-game/blob/430d67ad80753823cfdfe66218594257a4140642/docs/learned-ai.md) · [기계 판독 결과](../testing/learned-ai-validation.json)
+[게임 화면·빌드 소스·해시 기록](https://github.com/digital-tennis/digital-tennis-game/blob/b4c4bb5a82d7a94c23152597ac58a944861c4dfa/docs/learned-ai.md) · [기계 판독 결과](../testing/learned-ai-validation.json)
+
+최종 HUD 가독성 보완 소스5098f4ad3796도 일반 창에서 키보드 서브·모델 판단1회·반환1회와 상태 패널을 확인했습니다. 기능 검수의bd8037a 소스/3회 결과는 보존하며, 최종 UI 검수는 별도 해시로 추적합니다.

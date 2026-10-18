@@ -45,5 +45,16 @@
     "ppo-return.png": "95624ebb0b0aabb12dd87b1c104599daea408a4f59f2fcba34da34476b35bd94",
     "ppo-return.json": "19f75b12f90b586d6d4c9d9710575356c6414544366324d1606d416b64b17aab",
     "game-events.txt": "615f073fc99de2417a4bf63236e4b800c13ca8268bb64678d9d22d387ec8bd64"
+  },
+  "finalHudVerification": {
+    "date": "2026-10-19",
+    "sourceCommit": "5098f4ad37962dbe551d62fd35d84b69755ddeea",
+    "normalWindow": true,
+    "actualKeyboardServe": true,
+    "aiHits": 1,
+    "aiDecisions": 1,
+    "scope": "Final HUD contrast change only; gameplay unchanged from bd8037a functional validation",
+    "imageSha256": "083103bc5c0b598d00b8ff42f9431223613bd7cbfcc0bd037c18143f3e388742",
+    "paused": true
   }
 }
