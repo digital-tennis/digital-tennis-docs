@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-18",
+  "sourceCommits": {
+    "protocol": "d9a36826afbafa27a0e276cc53e44c904d05be53",
+    "firmware": "c2513e8ffc0f23449a372dfa0437dd309e808666",
+    "bleSdk": "ecbf54c7d15fb7cb519ee0a8d93534a54a7abc90",
+    "game": "126942ea17f3ba985e86fdb13d7322f410276682"
+  },
+  "pullRequests": {
+    "protocol": "https://github.com/digital-tennis/digital-tennis-protocol/pull/2",
+    "firmware": "https://github.com/digital-tennis/digital-tennis-firmware/pull/2",
+    "ble-unity": "https://github.com/digital-tennis/digital-tennis-ble-unity/pull/2",
+    "game": "https://github.com/digital-tennis/digital-tennis-game/pull/25",
+    "server": "https://github.com/digital-tennis/digital-tennis-match-server/pull/6"
+  },
+  "software": {
+    "protocolCases": 2045,
+    "sdkChecks": 39,
+    "firmwareHostSuites": 2,
+    "firmwareBoardCompileVariants": 3,
+    "unityEditPassed": 189,
+    "unityPlayPassed": 43,
+    "unityPlayIgnoredNullGpu": 1,
+    "unityPlayFailed": 0,
+    "unityControllerPassed": 1,
+    "unityGpuMousePassed": 1,
+    "gpuMock": {
+      "passed": true,
+      "nextServe": true,
+      "pauseOnDisconnect": true,
+      "captures": 15,
+      "errors": 0,
+      "nearHits": 1,
+      "farHits": 2,
+      "points": 1,
+      "scope": "Real Unity GPU UI, packet codec, BLE SDK and ordinary adapter with explicitly MOCK radio; no physical pairing/IMU claim."
+    }
+  },
+  "ordinaryMacRelease": {
+    "sourceCommit": "126942ea17f3ba985e86fdb13d7322f410276682",
+    "configuration": "release",
+    "ordinaryMacWindow": true,
+    "mockRadio": false,
+    "keyboard": [
+      "Intro/menu confirm",
+      "Open options/controller category",
+      "Keyboard detail and cancel",
+      "Wireless detail and actual native scan: no tennis-service device",
+      "Cancel without changing saved keyboard",
+      "Korea player/Japan Medium AI/Korea court",
+      "Space serve",
+      "Q intent shown on HUD",
+      "AI return and score 0-15",
+      "Next Space serve then score 0-30/next serve",
+      "Pause and clean quit"
+    ],
+    "mouse": "No new physical click proof. CUA click did not activate UI. Prior main PR24 is historical evidence; separate Unity GPU raycast test passed.",
+    "actualBleConnected": false,
+    "actualBleRoundTrip": false,
+    "physicalImuTested": false,
+    "runtimeErrors": 0
+  },
+  "hardware": {
+    "usbBoard": "NU54DK_v2_Pre-release",
+    "macBluetoothOn": true,
+    "referenceScannerNearbyCount": 10,
+    "matchingAdvertisementFound": false,
+    "actualConnection": false,
+    "actualRxTxRoundTrip": false,
+    "flashedOrReset": false,
+    "remaining": "Existing firmware identity/pairing LED state and compatible advertisement required; external IMU attachment and accuracy deferred"
+  },
+  "releaseArchives": [
+    {
+      "platform": "mac",
+      "configuration": "release",
+      "development": false,
+      "allowDebugging": false,
+      "sourceCommit": "126942ea17f3ba985e86fdb13d7322f410276682",
+      "dirtyWorkingTree": false,
+      "sha256": "2f9a031abaf2c88ac69ecbe8862a94680a12c6c2a3cc012c5d3be2d485953b5c",
+      "archive": "DigitalTennis-release-mac-126942ea.zip",
+      "unity": "6000.3.26f1",
+      "runtimeVerified": "Mac M2 Max GPU batch; see docs/polish-validation.md",
+      "distribution": "Local unsigned/ad-hoc preview;  no Developer ID notarization or paid distribution performed",
+      "macSignatureVerified": true,
+      "controllerNative": {
+        "helperSha256": "3471c9fcdfddce22170db58d59c64fbaf17a424c89c765778c3aae2800117373",
+        "build": {
+          "platform": "mac",
+          "sourceHashes": {
+            "Native/mac/main.swift": "cec89681431b240cd08b0063af3803cce52866df460eb24699bc992c9e529c9b",
+            "Native/mac/Info.plist": "a69896a7357ba686a6cd394bfcadef633bbc3e8b0a0c090516a18cd68abaccd3",
+            "Native/windows/BleHelper.csproj": "e0b54c0cefd46c2751c360981b34d91ca6ff5666bd81dac638c210d280efe875",
+            "Native/windows/Program.cs": "71bf261a32c6f2e81189a8393268ac132c21cd9934eb1023b464066d1fc0d9a2"
+          },
+          "sdk": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)\nTarget: arm64-apple-macosx26.0"
+        },
+        "notices": [
+          "Licenses/Unity-WebRTC/LICENSE.md",
+          "Licenses/Unity-WebRTC/Third Party Notices.md"
+        ]
+      }
+    },
+    {
+      "platform": "windows",
+      "configuration": "release",
+      "development": false,
+      "allowDebugging": false,
+      "sourceCommit": "126942ea17f3ba985e86fdb13d7322f410276682",
+      "dirtyWorkingTree": false,
+      "sha256": "0a2c928ad448023d7ed2be1d70cb2eb597ab99ea92556a26c46a8fb35af0a356",
+      "archive": "DigitalTennis-release-windows-126942ea.zip",
+      "unity": "6000.3.26f1",
+      "runtimeVerified": "Cross-build only; physical Windows execution still required",
+      "distribution": "Local unsigned/ad-hoc preview;  no Developer ID notarization or paid distribution performed",
+      "macSignatureVerified": false,
+      "controllerNative": {
+        "helperSha256": "5d4b95f2b90b344d1b941902b0c2eaa8ab2b043bb86cb3dc4cbaaba1e7a84825",
+        "build": {
+          "platform": "windows",
+          "sourceHashes": {
+            "Native/mac/main.swift": "cec89681431b240cd08b0063af3803cce52866df460eb24699bc992c9e529c9b",
+            "Native/mac/Info.plist": "a69896a7357ba686a6cd394bfcadef633bbc3e8b0a0c090516a18cd68abaccd3",
+            "Native/windows/BleHelper.csproj": "e0b54c0cefd46c2751c360981b34d91ca6ff5666bd81dac638c210d280efe875",
+            "Native/windows/Program.cs": "71bf261a32c6f2e81189a8393268ac132c21cd9934eb1023b464066d1fc0d9a2"
+          },
+          "sdk": "10.0.105"
+        },
+        "notices": [
+          "Licenses/Microsoft.AspNetCore.App.Runtime.win-x64-10.0.5/LICENSE 2.txt",
+          "Licenses/Microsoft.AspNetCore.App.Runtime.win-x64-10.0.5/LICENSE.txt",
+          "Licenses/Microsoft.AspNetCore.App.Runtime.win-x64-10.0.5/THIRD-PARTY-NOTICES 2.TXT",
+          "Licenses/Microsoft.AspNetCore.App.Runtime.win-x64-10.0.5/THIRD-PARTY-NOTICES.TXT",
+          "Licenses/Microsoft.NET.ILLink.Tasks-10.0.5/THIRD-PARTY-NOTICES 2.TXT",
+          "Licenses/Microsoft.NET.ILLink.Tasks-10.0.5/THIRD-PARTY-NOTICES.TXT",
+          "Licenses/Microsoft.NETCore.App.Host.win-x64-10.0.5/LICENSE 2.TXT",
+          "Licenses/Microsoft.NETCore.App.Host.win-x64-10.0.5/LICENSE.TXT",
+          "Licenses/Microsoft.NETCore.App.Host.win-x64-10.0.5/THIRD-PARTY-NOTICES 2.TXT",
+          "Licenses/Microsoft.NETCore.App.Host.win-x64-10.0.5/THIRD-PARTY-NOTICES.TXT",
+          "Licenses/Microsoft.NETCore.App.Runtime.win-x64-10.0.5/LICENSE 2.TXT",
+          "Licenses/Microsoft.NETCore.App.Runtime.win-x64-10.0.5/LICENSE.TXT",
+          "Licenses/Microsoft.NETCore.App.Runtime.win-x64-10.0.5/THIRD-PARTY-NOTICES 2.TXT",
+          "Licenses/Microsoft.NETCore.App.Runtime.win-x64-10.0.5/THIRD-PARTY-NOTICES.TXT",
+          "Licenses/Microsoft.WindowsDesktop.App.Ref-10.0.5/LICENSE",
+          "Licenses/Microsoft.WindowsDesktop.App.Ref-10.0.5/LICENSE 2",
+          "Licenses/Microsoft.WindowsDesktop.App.Runtime.win-x64-10.0.5/LICENSE",
+          "Licenses/Microsoft.WindowsDesktop.App.Runtime.win-x64-10.0.5/LICENSE 2",
+          "Licenses/Unity-WebRTC/LICENSE 2.md",
+          "Licenses/Unity-WebRTC/LICENSE.md",
+          "Licenses/Unity-WebRTC/Third Party Notices 2.md",
+          "Licenses/Unity-WebRTC/Third Party Notices.md",
+          "Licenses/packages 2.json",
+          "Licenses/packages.json"
+        ]
+      }
+    }
+  ],
+  "archiveChecks": "Both ZIP CRC/SHA256 passed; Mac deep strict signature verified. Windows cross-build only."
+}

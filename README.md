@@ -2,8 +2,9 @@
 
 NU40-DK와 **별도 부착형 외장 IMU**를 라켓 컨트롤러로 사용하고, Unity PC 테니스 게임에서 1인 AI 플레이와 온라인 2인 플레이를 제공하는 프로젝트입니다. 개발 기간은 **12일**, 개발자는 **3명**, 총 공수는 **36인일**입니다.
 
-게임·AI·온라인 기능의 기존 main과 새 소프트웨어 확장 PR을 구별해 관리합니다. 펌웨어 구조·패킷 코덱·BLE SDK와 직접 P2P는 검토 PR에서 확장하며, 실물 BLE/IMU 검증은 유예합니다. [현재 구현과 검증 범위](docs/project/implementation-status.md)를 먼저 확인하세요.
+게임 main은 실제 P2P·릴레이 복구, 네이티브 BLE SDK와 입력 설정, 일반 Mac 창 키보드·마우스 검증을 포함합니다. 이번 후속 PR은 펌웨어 송신·버튼·모션과 센서 없는 BLE 통신 확인을 보완합니다. 외장 IMU 정확도와 Windows·두 PC 실기는 별도입니다. [현재 구현과 검증 범위](docs/project/implementation-status.md)를 먼저 확인하세요.
 
+- [컨트롤러 후속 검수·최신 배포판](docs/project/controller-readiness.md)
 - [처음 읽는 문서](docs/README.md)
 - [제품과 저장소 책임](docs/project/repositories.md)
 - [12일 일정과 72개 반일 작업 슬롯](docs/planning/wbs.md)

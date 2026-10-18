@@ -10,7 +10,7 @@ v1 배치를 보존하면서 v2의 명시적 의도를 추가한 계약입니다
 | 이벤트 TX | 6d7c1001-9d40-4cb7-a381-5e908be0a001 | Notify |
 | 명령 RX | 6d7c1002-9d40-4cb7-a381-5e908be0a001 | Write with response |
 
-한 알림은 정확히 20바이트입니다. 이벤트 TX는 SWING·BUTTON·STATUS·ACK를, 명령 RX는 CALIBRATE를 받습니다. CCCD 구독이 성공한 연결에만 Notify합니다. 센서 원시값은 우선 USB/시리얼 디버그로 확인하며 임의로 이벤트 패킷 안에 끼워 넣지 않습니다.
+한 알림은 정확히 20바이트입니다. 이벤트 TX는 SWING·BUTTON·STATUS·ACK를, 명령 RX는 CALIBRATE와 v2 LINK_PROBE를 받습니다. v2 LINK_REPLY는 이벤트 TX로 돌아옵니다. CCCD 구독이 성공한 연결에만 Notify합니다. 센서 원시값은 우선 USB/시리얼 디버그로 확인하며 임의로 이벤트 패킷 안에 끼워 넣지 않습니다.
 
 ## 패킷 배치
 
@@ -20,7 +20,7 @@ v1 배치를 보존하면서 v2의 명시적 의도를 추가한 계약입니다
 | --- | --- | --- | --- |
 | 0 | 1 | magic | 0x44 |
 | 1 | 1 | version | 1 또는2 |
-| 2 | 1 | type | 1 SWING, 2 BUTTON, 3 STATUS, 128 CALIBRATE, 129 ACK |
+| 2 | 1 | type | 1 SWING, 2 BUTTON, 3 STATUS, 128 CALIBRATE, 129 ACK, v2 전용 130 LINK_PROBE / 131 LINK_REPLY |
 | 3 | 1 | flags | bit0 보정 완료, bit1 센서 준비, bit2 왼손; bit3~7=0 |
 | 4 | 2 | sequence | uint16, 송신 방향별 패킷 순번 |
 | 6 | 4 | deviceTimeMs | uint32, MCU 부팅 후 단조 밀리초; CALIBRATE는 0 |
@@ -45,11 +45,17 @@ ACK는 보정 작업이 끝난 후 결과를 한 번 보냅니다. GATT write �
 
 CRC 매개변수는 polynomial=0x07, init=0x00, refin=false, refout=false, xorout=0x00입니다. 검증용 ASCII `123456789`의 CRC는 0xF4입니다. CRC는 전송 오류 검출용입니다.
 
+## 센서 없이 통신만 확인하기
+
+검토 브랜치의 v2 LINK_PROBE/REPLY는 센서 연결/보정과 독립된 PC↔기기 왕복 검사다. 두 타입의 kind·power·각도는0, eventId는0이 아닌 nonce다. PROBE의 flags·deviceTimeMs는0, battery는255이고 REPLY는 실제 센서 flags·기기 시각을 보고한다. v1에서는 새 타입을 거부한다. PC는 현재 연결에서 같은 nonce 응답을2초 안에 받을 때만 성공으로 표시한다. CRC가 맞아도 이전 연결/다른 nonce/늦은 응답은 성공이 아니다. 왕복 성공으로 보정·동작 테스트·설정 저장을 허용하지 않는다.
+
+정본은 protocol d9a36826afbafa27a0e276cc53e44c904d05be53의 spec/controller-v2.md와 공통 벡터다. [후속 검수와 실기 경계](../project/controller-readiness.md)를 함께 읽는다.
+
 ## 순번과 중복
 
 패킷 sequence는 65535 다음 0이 됩니다. `delta=(new-old)&0xffff`로 계산하여 `0<delta<32768`이면 새로운 패킷, 0이면 중복, 그 외는 오래된 패킷으로 처리합니다. 첫 패킷은 기준으로 수용합니다. 한 번에 32768개 이상을 건너뛴 연결은 새 연결 세션으로 초기화합니다.
 
-스윙 이벤트는 같은 eventId와 원래 deviceTimeMs로 처음 한 번, 10ms·20ms 뒤 두 번 더 전송하는 초기 설계입니다. 각 전송의 sequence는 증가합니다. SDK는 최근 64개의 `(sessionId,type,eventId)`를 저장하여 한 스윙을 한 번만 전달합니다. STATUS와 ACK는 스윙 중복 처리와 별도로 처리합니다. 연결이 끊기면 SDK의 sessionId와 수신 이력을 바꾸고 이전 스윙을 재생하지 않습니다.
+스윙 이벤트는 같은 eventId와 원래 deviceTimeMs로 총3회 보내는 설계입니다. 후속 펌웨어는 BLE 역압에 대비해20ms 재시도 간격, 입력200ms/제어1000ms 만료와32개 유한 큐를 사용합니다. 최초 설계의10/20ms 예정값과 구분합니다. 각 전송의 sequence는 증가합니다. SDK는 최근 64개의 `(sessionId,type,eventId)`를 저장하여 한 스윙을 한 번만 전달합니다. STATUS와 ACK는 스윙 중복 처리와 별도로 처리합니다. 연결이 끊기면 SDK의 sessionId와 수신 이력을 바꾸고 이전 스윙을 재생하지 않습니다.
 
 deviceTimeMs는 약 49.7일에 wrap합니다. 연속 MCU 샘플의 간격은 uint32 차로 계산합니다. MCU 시각과 PC 시각을 빼서 입력 지연으로 해석하지 않습니다. 지연 측정은 같은 PC의 수신→게임 소비 시간 또는 별도 동기화 실험으로 구분합니다.
 
