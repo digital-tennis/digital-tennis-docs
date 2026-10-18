@@ -2,7 +2,7 @@
 
 ## 프로젝트 이해
 
-* [개발 시작 안내](README.md)
+* [문서 시작 안내](README.md)
 * [현재 구현과 검증 범위](project/implementation-status.md)
 * [장비 없이 진행하는 소프트웨어 확장](project/software-completion.md)
   - [컨트롤러 준비 상태와 최신 배포](project/controller-readiness.md)
