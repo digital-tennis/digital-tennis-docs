@@ -32,3 +32,15 @@
 [게임 화면·빌드 소스·해시 기록](https://github.com/digital-tennis/digital-tennis-game/blob/b4c4bb5a82d7a94c23152597ac58a944861c4dfa/docs/learned-ai.md) · [기계 판독 결과](../testing/learned-ai-validation.json)
 
 최종 HUD 가독성 보완 소스5098f4ad3796도 일반 창에서 키보드 서브·모델 판단1회·반환1회와 상태 패널을 확인했습니다. 기능 검수의bd8037a 소스/3회 결과는 보존하며, 최종 UI 검수는 별도 해시로 추적합니다.
+
+## main 병합과 소비 참조
+
+2026-10-19에 AI → game 순서로 스쿼시 병합했으며 firmware의 IMU 인수 가이드도 병합했다. 게임 manifest와 Unity 생성 잠금 파일은 아래 AI main 커밋을 참조한다. 기존 일반 창·장면 검수 소스/모델 해시는 당시 증거로 보존한다.
+
+| 저장소 | PR | main 병합 커밋 |
+| --- | --- | --- |
+| digital-tennis-ai | [#5](https://github.com/digital-tennis/digital-tennis-ai/pull/5) | [b00d33aa500c](https://github.com/digital-tennis/digital-tennis-ai/commit/b00d33aa500cc9ae4f94994f8ea0f530f9ec43ba) |
+| digital-tennis-firmware | [#4](https://github.com/digital-tennis/digital-tennis-firmware/pull/4) | [97efb9a45fc7](https://github.com/digital-tennis/digital-tennis-firmware/commit/97efb9a45fc70040fb20041255321ca6c0f77652) |
+| digital-tennis-game | [#27](https://github.com/digital-tennis/digital-tennis-game/pull/27) | [9c4767a5c7f6](https://github.com/digital-tennis/digital-tennis-game/commit/9c4767a5c7f69d2df7302bd9c2f948d84cc664ff) |
+
+새 소비 참조로 AI main28검사와 Unity 프로젝트 검사·Edit191검사를 다시 통과했다. AI Runtime과 번들 actor는 기존 실기 검수 소스와 동일하다. 이번 병합 작업에서 IMU나 추가 보드 버튼 검증을 수행하지 않았다.

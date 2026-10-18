@@ -56,5 +56,18 @@
     "scope": "Final HUD contrast change only; gameplay unchanged from bd8037a functional validation",
     "imageSha256": "083103bc5c0b598d00b8ff42f9431223613bd7cbfcc0bd037c18143f3e388742",
     "paused": true
+  },
+  "mainIntegration": {
+    "date": "2026-10-19",
+    "commits": {
+      "ai": "b00d33aa500cc9ae4f94994f8ea0f530f9ec43ba",
+      "firmware": "97efb9a45fc70040fb20041255321ca6c0f77652",
+      "game": "9c4767a5c7f69d2df7302bd9c2f948d84cc664ff"
+    },
+    "aiPackagePin": "b00d33aa500cc9ae4f94994f8ea0f530f9ec43ba",
+    "priorValidationSourceHashesPreserved": true,
+    "aiMainChecks": 28,
+    "unityProjectCheck": "passed",
+    "unityEditPassed": 191
   }
 }
