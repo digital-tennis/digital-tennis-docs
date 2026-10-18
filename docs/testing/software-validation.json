@@ -515,5 +515,38 @@
       "nrf": false,
       "zephyr": false
     }
+  },
+  "mainMerge": {
+    "date": "2026-10-18",
+    "method": "squash",
+    "order": [
+      "protocol",
+      "firmware",
+      "ble",
+      "server",
+      "game",
+      "docs"
+    ],
+    "commits": {
+      "protocol": "5163cd3073be696c0f8da9ab21f2d85f7e160575",
+      "firmware": "d720fca8f699d951fe68b8c413865ee233989fa6",
+      "ble": "a4885be6e65b8aba6bfe20cdd2b0e241653aae84",
+      "server": "305fb82dd65de5cd109255a7d3a862b1e79225ba",
+      "game": "9fec849c9bb29f6df6180e8bd71a549d8ac5e7e7"
+    },
+    "gameProtocolPin": "5163cd3073be696c0f8da9ab21f2d85f7e160575",
+    "gameControllerPin": "a4885be6e65b8aba6bfe20cdd2b0e241653aae84",
+    "firmwareProtocolPin": "5163cd3073be696c0f8da9ab21f2d85f7e160575",
+    "sdkCiProtocolPin": "5163cd3073be696c0f8da9ab21f2d85f7e160575",
+    "refreshedValidation": {
+      "firmwarePinnedProtocolFetched": true,
+      "firmwareHostSanitizersPassed": true,
+      "bleChecksWithDefaultSiblingPath": 31,
+      "serverMainChecks": 28,
+      "unityProjectCheck": true,
+      "unityPacketControllerPlayMode": true,
+      "gameSourceCheck": true
+    },
+    "historicalEvidence": "Top-level commits, full runtime reports, board build hashes and package checksums retain their original tested sources. A new main Mac build is generated separately after sync; its sourceCommit must match the merged game commit."
   }
 }

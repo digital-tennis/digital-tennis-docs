@@ -27,7 +27,7 @@
 
 ## 온라인 계약의 실제 구현
 
-기존 main의 실행 경로는 WebSocket 릴레이이며, 이번 검토 PR에서는 **실제 WebRTC DataChannel과 WebSocket 릴레이 복구**를 구현합니다. 직접 연결의 양측 준비가 확인되어야 P2P로 합의하고, 8초 제한이나 채널 실패에는 새 epoch로 릴레이를 합의합니다. 시그널링만 통과한 결과를 P2P 성공이라고 표시하지 않습니다. 최신 PR과 실행 증거는 [소프트웨어 확장](software-completion.md)을 확인하세요. 호스트만 공/규칙/점수를 계산하고 게스트는 순번·epoch가 검증된 버퍼를 표시합니다. Near/Far는 고정 선수 ID이며 엔드 교대 시 공유 좌표를 뒤집지 않습니다. 각 카메라가 자기 선수를 아래에 보여줍니다.
+게임 PR23과 서버 PR5의 스쿼시 병합으로 main은 **실제 WebRTC DataChannel과 WebSocket 릴레이 복구**를 지원합니다. 직접 연결의 양측 준비가 확인되어야 P2P로 합의하고, 8초 제한이나 채널 실패에는 새 epoch로 릴레이를 합의합니다. 시그널링만 통과한 결과를 P2P 성공이라고 표시하지 않습니다. 최신 PR과 실행 증거는 [소프트웨어 확장](software-completion.md)을 확인하세요. 호스트만 공/규칙/점수를 계산하고 게스트는 순번·epoch가 검증된 버퍼를 표시합니다. Near/Far는 고정 선수 ID이며 엔드 교대 시 공유 좌표를 뒤집지 않습니다. 각 카메라가 자기 선수를 아래에 보여줍니다.
 
 종료된 같은 matchId에 대해 양쪽이 재경기를 요청해야 새 matchId로 시작합니다. 한쪽 요청, 취소, 끊김은 즉시 새 경기를 시작하지 않습니다. 이전 matchId의 늦은 입력과 오래된 snapshot은 반영하지 않습니다. 헛스윙도 고유 swingId·타격 종류·나이·접촉/서브 여부로 전달하며 재접속 상태를 새 애니메이션으로 재생하지 않습니다.
 
@@ -53,7 +53,7 @@ Unity EditMode150개·전체PlayMode35개, 전경 추가 뒤 메뉴4개, 서버2
 
 전체225매치업/3난이도/3시드/3입력전략/2선공을 전후각12150사례·48600포인트로 측정해 체력 비용CSV를 조정했습니다. 종료 체력1 미만 비중21.4%→14.7%이며 사람 승률이나 경쟁적 밸런스의 최종 승인은 아닙니다. 능력치 합420은 유지했습니다.
 
-구현/검증 근거: [게임 PR17](https://github.com/digital-tennis/digital-tennis-game/pull/17), [서버 PR4](https://github.com/digital-tennis/digital-tennis-match-server/pull/4), [품질 구현 소스](https://github.com/digital-tennis/digital-tennis-game/tree/c069fc0). 비개발 배포는 `release-mac`/`release-windows`와 clean source/실제 빌드 플래그/체크섬 검사로 진행합니다. 세부 결과/제한은 게임의 최신 `docs/polish-validation.md`를 기준으로 합니다. 서버 변경을 먼저 반영하며 기존 초안PR을 별도 승인 없이 병합하지 않습니다.
+구현/검증 근거: [게임 PR17](https://github.com/digital-tennis/digital-tennis-game/pull/17), [서버 PR4](https://github.com/digital-tennis/digital-tennis-match-server/pull/4), [품질 구현 소스](https://github.com/digital-tennis/digital-tennis-game/tree/c069fc0). 비개발 배포는 `release-mac`/`release-windows`와 clean source/실제 빌드 플래그/체크섬 검사로 진행합니다. 세부 결과/제한은 게임의 최신 `docs/polish-validation.md`를 기준으로 합니다. 서버 변경을 먼저 반영하며 새 병합은 사용자의 요청에 따라 진행합니다.
 
 ### 2026-10-17 오프닝·경기 음향 추가
 
@@ -61,6 +61,6 @@ Unity EditMode150개·전체PlayMode35개, 전경 추가 뒤 메뉴4개, 서버2
 
 ## 2026-10-18 소프트웨어 확장 작업
 
-게임 PR22까지 main에 반영됐습니다. 국기·국경선·기기별 상세·키 배치·테스트·취소/저장과 실제 입력 적용을 완료했습니다. 최근 기능 기준은 게임의 [입력 설정](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/controller-setup-flow.md)과 [전 선수 품질](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/roster-athlete-art-review.md)입니다. 위의 과거 검증 수치는 해당 커밋 기록이며 최신 결과로 대체해 주장하지 않습니다.
+게임 PR23까지 main에 반영됐습니다. 국기·국경선·기기별 상세·키 배치·테스트·취소/저장과 실제 입력 적용을 완료했습니다. 최근 기능 기준은 게임의 [입력 설정](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/controller-setup-flow.md)과 [전 선수 품질](https://github.com/digital-tennis/digital-tennis-game/blob/main/docs/roster-athlete-art-review.md)입니다. 위의 과거 검증 수치는 해당 커밋 기록이며 최신 결과로 대체해 주장하지 않습니다.
 
-실물 장비를 유예한 새 소프트웨어는 검토 PR로 분리했습니다. [작업 범위·의존 관계·검증 구분](software-completion.md)을 확인하세요. 검토 중인 PR은 완료된 main 배포와 구별합니다.
+실물 장비를 유예한 새 소프트웨어는 제품별 PR로 검토한 뒤 의존성 순서대로 스쿼시 병합했습니다. [작업 범위·병합된 main 커밋·검증 구분](software-completion.md)을 확인하세요. 게임의 protocol/SDK 패키지도 병합된 커밋으로 고정했습니다. 과거 검증 파일의 소스·배포 체크섬은 그대로 보존하고 새 main 확인은 별도 기록합니다.

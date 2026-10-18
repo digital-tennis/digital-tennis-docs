@@ -4,7 +4,7 @@
 
 ## 구현 제품과 의존 관계
 
-| 제품 | 이번 구현 | 검토 PR |
+| 제품 | 이번 구현 | 병합 PR |
 |---|---|---|
 | protocol | C99/C# 코덱·공통 벡터·호환 v2 | [PR1](https://github.com/digital-tennis/digital-tennis-protocol/pull/1) |
 | firmware | 참고 보드·외장 IMU 포트·보정/필터/모션·BLE Peripheral 구조·호스트/보드 대상 컴파일 | [PR1](https://github.com/digital-tennis/digital-tennis-firmware/pull/1) |
@@ -13,7 +13,17 @@
 | game | 실제 패킷 SDK·보정/테스트/저장·직접 DataChannel·품질/배포 회귀 | [PR23](https://github.com/digital-tennis/digital-tennis-game/pull/23) |
 | docs | 현재 상태·재현·증거·계정/실물/사람 선택의 구분 | 이 문서 PR |
 
-프로토콜은 커밋 `0f3b8b251af821d7c7eb7f6473b95144d4e12810`을 소비 제품에서 고정한다. SDK도 검토한 Git SHA로 고정한다. **스쿼시 병합 시 커밋이 바뀌므로** protocol→firmware/SDK→game 순으로 병합된 SHA를 갱신·검증한 뒤 종속 PR을 병합한다. 서버의 새 제어 메시지는 game과 함께 적용해야 한다. 이번 요청은 PR까지이며 자동 병합하지 않는다.
+후속 병합 요청에 따라 protocol→firmware→BLE SDK→server→game 순서로 스쿼시 병합했다. 펌웨어와 SDK의 프로토콜 참조, 게임의 manifest/lock을 아래 main 커밋으로 갱신하고 검증했다. AI 패키지는 기존 병합된 main 커밋을 유지한다. 서버의 새 제어 메시지는 이 게임 버전과 함께 적용한다. 문서 PR은 제품 병합 결과를 기록한 뒤 마지막으로 병합한다.
+
+| 제품 | 스쿼시 병합된 main 커밋 |
+|---|---|
+| digital-tennis-protocol | [`5163cd3073be696c0f8da9ab21f2d85f7e160575`](https://github.com/digital-tennis/digital-tennis-protocol/commit/5163cd3073be696c0f8da9ab21f2d85f7e160575) |
+| digital-tennis-firmware | [`d720fca8f699d951fe68b8c413865ee233989fa6`](https://github.com/digital-tennis/digital-tennis-firmware/commit/d720fca8f699d951fe68b8c413865ee233989fa6) |
+| digital-tennis-ble-unity | [`a4885be6e65b8aba6bfe20cdd2b0e241653aae84`](https://github.com/digital-tennis/digital-tennis-ble-unity/commit/a4885be6e65b8aba6bfe20cdd2b0e241653aae84) |
+| digital-tennis-match-server | [`305fb82dd65de5cd109255a7d3a862b1e79225ba`](https://github.com/digital-tennis/digital-tennis-match-server/commit/305fb82dd65de5cd109255a7d3a862b1e79225ba) |
+| digital-tennis-game | [`9fec849c9bb29f6df6180e8bd71a549d8ac5e7e7`](https://github.com/digital-tennis/digital-tennis-game/commit/9fec849c9bb29f6df6180e8bd71a549d8ac5e7e7) |
+
+새 참조로 펌웨어 프로토콜 실제 다운로드·호스트 sanitizer 검사, SDK31개 검사(표준 인접 저장소 경로 포함), 서버 main28개 검사, Unity 프로젝트·패킷 컨트롤러 PlayMode·소스 검사를 통과했다. 원격 병합 브랜치와 로컬 main/브랜치를 정리한다. 아래 전체 경기·품질·배포 수치와 체크섬은 원래 검증한 커밋의 기록이며 새 main 빌드의 증거와 구분한다.
 
 ## NU40-DK 구조와 센서 경계
 
@@ -89,4 +99,4 @@
 - Mac 배포 실행 파일의 인트로·득점·다음 서브 및 경기 BGM0·함성 정책을 별도 재검사했다. Mac 일반 창 실행은 확인했지만 UI 도구가 screenshot timeout/elementHasNoFrame을 반환해 실제 키보드·마우스 조작은 미검증이다. 잠금 우회나 물리 입력 성공을 주장하지 않는다.
 - Mac·Windows 비개발 패키지는 clean 소스, Development/AllowDebugging=false, helper/라이선스·ZIP CRC·SHA256을 검사한다. Mac은 로컬adhoc서명이고 Windows는 교차 빌드다.
 
-[기계가 읽을 수 있는 수치·소스 커밋·체크섬](../testing/software-validation.json)에 실제 결과를 보존한다. 원본 PNG/WAV·실행 로그·배포ZIP은 Git에 넣지 않고 이번 작업의 로컬 전달 폴더에 둔다. 모든 제품 PR은 검토용이며 자동 병합하지 않았다. 실물 장비/두PC·계정 게시·음악/음성/밸런스 채택 항목을 소프트웨어 검사로 완료 처리하지 않는다.
+[기계가 읽을 수 있는 수치·소스 커밋·체크섬](../testing/software-validation.json)에 실제 결과를 보존한다. 원본 PNG/WAV·실행 로그·배포ZIP은 Git에 넣지 않고 이번 작업의 로컬 전달 폴더에 둔다. 초기 검토 뒤 후속 요청에 따라 위 제품 PR들을 스쿼시 병합했다. 실물 장비/두PC·계정 게시·음악/음성/밸런스 채택 항목을 소프트웨어 검사로 완료 처리하지 않는다.
