@@ -3,7 +3,7 @@
 저장소: [digital-tennis-firmware](https://github.com/digital-tennis/digital-tennis-firmware)  
 초기 담당 역할: A
 
-NU40-DK에 별도로 부착한 IMU의 데이터 획득, 보정, 스윙 인식, BLE 전송를 구현합니다. 아래 과제는 아직 구현하지 않은 문제 명세입니다. 각 입력·출력과 예제를 먼저 재현하고 예외 조건을 추가하세요. [WBS](../planning/wbs.md)의 과제 번호로 작업을 연결합니다. 초기 숫자 설정은 실제 환경 검증 후 변경 이력과 함께 조정할 수 있습니다.
+NU40-DK에 별도로 부착한 IMU의 데이터 획득, 보정, 스윙 인식, BLE 전송를 구현합니다. 아래 과제는 최초 문제 명세이며 현재의 구현 완료표가 아닙니다. 소프트웨어 구조·코덱·SDK는 [검토 중인 구현 PR](https://github.com/digital-tennis/digital-tennis-firmware/pull/1)과 [현재 확장 작업](../project/software-completion.md)에서 확인합니다. 실제 외장 IMU/라디오 검증은 유예 상태입니다. 각 입력·출력과 예제를 먼저 재현하고 예외 조건을 추가하세요. [WBS](../planning/wbs.md)의 과제 번호로 작업을 연결합니다. 초기 숫자 설정은 실제 환경 검증 후 변경 이력과 함께 조정할 수 있습니다.
 
 ## 공통 준비
 
