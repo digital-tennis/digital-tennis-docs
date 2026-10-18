@@ -75,42 +75,35 @@
   "prs": [
     {
       "product": "protocol",
-      "url": "https://github.com/digital-tennis/digital-tennis-protocol/pull/2",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-protocol/pull/2"
     },
     {
       "product": "firmware",
-      "url": "https://github.com/digital-tennis/digital-tennis-firmware/pull/2",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-firmware/pull/2"
     },
     {
       "product": "ble-unity",
-      "url": "https://github.com/digital-tennis/digital-tennis-ble-unity/pull/2",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-ble-unity/pull/2"
     },
     {
       "product": "game",
-      "url": "https://github.com/digital-tennis/digital-tennis-game/pull/25",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-game/pull/25"
     },
     {
       "product": "ai",
-      "url": "https://github.com/digital-tennis/digital-tennis-ai/pull/4",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-ai/pull/4"
     },
     {
       "product": "match-server",
-      "url": "https://github.com/digital-tennis/digital-tennis-match-server/pull/6",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-match-server/pull/6"
     },
     {
       "product": "docs",
-      "url": "https://github.com/digital-tennis/digital-tennis-docs/pull/3",
-      "draft": true
+      "url": "https://github.com/digital-tennis/digital-tennis-docs/pull/3"
     }
   ],
-  "mergePerformed": false,
-  "mainChanged": false,
+  "mergePerformed": true,
+  "mainChanged": true,
   "releases": [
     {
       "platform": "mac",
@@ -200,5 +193,51 @@
     "calibrated": false
   },
   "normalWindowEvidence": "https://github.com/digital-tennis/digital-tennis-game/blob/7af42a20b42975b21a41ab3f7055c6846fb510e9/docs/evidence/ble-bonding-2026-10-19/validation.json",
-  "documentationEvidenceCommit": "7af42a20b42975b21a41ab3f7055c6846fb510e9"
+  "documentationEvidenceCommit": "7af42a20b42975b21a41ab3f7055c6846fb510e9",
+  "originalValidationIntegrationState": {
+    "mergePerformed": false,
+    "mainChanged": false,
+    "prDrafts": true
+  },
+  "integratedProducts": {
+    "protocol": {
+      "commit": "8270fbe2297df365ee5dd39c061cd3c1b827d0c8",
+      "pr": "https://github.com/digital-tennis/digital-tennis-protocol/pull/2",
+      "state": "MERGED"
+    },
+    "ai": {
+      "commit": "c32a719f671eaee695c05f75e7766551d42841ca",
+      "pr": "https://github.com/digital-tennis/digital-tennis-ai/pull/4",
+      "state": "MERGED"
+    },
+    "server": {
+      "commit": "a7380b70f26bb7a079dfb28f944f02b6876f0b64",
+      "pr": "https://github.com/digital-tennis/digital-tennis-match-server/pull/6",
+      "state": "MERGED"
+    },
+    "firmware": {
+      "commit": "c695aebba4dc224aaec0168701a24f260adc60e3",
+      "pr": "https://github.com/digital-tennis/digital-tennis-firmware/pull/2",
+      "state": "MERGED"
+    },
+    "sdk": {
+      "commit": "df79fb03cdcfcedf8a8ce90e73bb1af70f6b6884",
+      "pr": "https://github.com/digital-tennis/digital-tennis-ble-unity/pull/2",
+      "state": "MERGED"
+    },
+    "game": {
+      "commit": "4c79e023d1ab491f737da1dc43c43893b72832a6",
+      "pr": "https://github.com/digital-tennis/digital-tennis-game/pull/25",
+      "state": "MERGED"
+    }
+  },
+  "integrationChecks": {
+    "immutableGamePackageRefs": true,
+    "firmwareRemoteProtocolRef": "8270fbe2297df365ee5dd39c061cd3c1b827d0c8",
+    "sdkCiProtocolRef": "8270fbe2297df365ee5dd39c061cd3c1b827d0c8",
+    "unityEditPassed": 189,
+    "unityPlayPassed": 43,
+    "unityPlaySkippedNullGpu": 1,
+    "note": "Software checks on integrated product sources. Earlier normal-window evidence retains its original source revisions; latest-main physical reconfirmation is a separate run."
+  }
 }

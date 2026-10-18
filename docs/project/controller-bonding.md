@@ -1,6 +1,6 @@
 # DT-TR-23-10-00 · 실물 컨트롤러 본딩 검수
 
-문서 개정 **R02**, 2026-10-19, 검토본. 실제 제품은 **NU40-DK+별도 외장 IMU**이며 이번 실기 기기는 센서 없는 NU-54다. [책임 분리와 ADR](architecture.md), [통신 계약](../contracts/controller-protocol.md)을 따른다.
+문서 개정 **R03**, 2026-10-19, 검토본. 실제 제품은 **NU40-DK+별도 외장 IMU**이며 이번 실기 기기는 센서 없는 NU-54다. [책임 분리와 ADR](architecture.md), [통신 계약](../contracts/controller-protocol.md)을 따른다.
 
 ## 00 현재 결과
 
@@ -37,9 +37,9 @@ NU40-DK 실물 GPIO/BLE, 별도 외장 IMU의 배선·장착·보정·인식률,
 
 [README/라이선스 운영](open-source.md)과 [펌웨어 빌드·설치 근거](https://github.com/digital-tennis/digital-tennis-firmware/pull/2)를 함께 확인한다.
 
-## 20 검토 PR
+## 20 통합 PR과 검증 소스
 
-모두 draft이며 병합하지 않았다. protocol→firmware/SDK→game→docs 순서로 검토하고, 스쿼시 병합 후 소비 SHA를 새 병합 커밋으로 다시 고정한다. AI는 README/라이선스만 변경했다.
+아래 표는 최초 실기 검증에 사용한 소스를 보존한다. 이후 protocol·AI·서버→firmware·SDK→game 순서로 실행 제품 6개 PR을 스쿼시 병합했다. 소비 패키지는 아래 main 커밋으로 고정했으며, 문서와 조직 소개 PR의 최종 상태는 각 GitHub PR에서 확인한다. AI는 README/라이선스만 변경했다.
 
 | 제품 | PR | 검증한 실행 코드 |
 | --- | --- | --- |
@@ -50,9 +50,23 @@ NU40-DK 실물 GPIO/BLE, 별도 외장 IMU의 배선·장착·보정·인식률,
 | digital-tennis-ai | [#4](https://github.com/digital-tennis/digital-tennis-ai/pull/4) | 7053a4e74c25 |
 | digital-tennis-match-server | [#6](https://github.com/digital-tennis/digital-tennis-match-server/pull/6) | d064ade0c60a |
 | digital-tennis-docs | [#3](https://github.com/digital-tennis/digital-tennis-docs/pull/3) | 이 문서 PR |
+| .github | [#1](https://github.com/digital-tennis/.github/pull/1) | 조직 소개 문서 |
 
 
-## 30 최신 검토 배포판
+### 병합된 실행 제품과 소비 참조
+
+| 제품 | main 병합 커밋 |
+| --- | --- |
+| digital-tennis-protocol | [8270fbe2297d](https://github.com/digital-tennis/digital-tennis-protocol/commit/8270fbe2297df365ee5dd39c061cd3c1b827d0c8) |
+| digital-tennis-ai | [c32a719f671e](https://github.com/digital-tennis/digital-tennis-ai/commit/c32a719f671eaee695c05f75e7766551d42841ca) |
+| digital-tennis-match-server | [a7380b70f26b](https://github.com/digital-tennis/digital-tennis-match-server/commit/a7380b70f26bb7a079dfb28f944f02b6876f0b64) |
+| digital-tennis-firmware | [c695aebba4dc](https://github.com/digital-tennis/digital-tennis-firmware/commit/c695aebba4dc224aaec0168701a24f260adc60e3) |
+| digital-tennis-ble-unity | [df79fb03cdcf](https://github.com/digital-tennis/digital-tennis-ble-unity/commit/df79fb03cdcfcedf8a8ce90e73bb1af70f6b6884) |
+| digital-tennis-game | [4c79e023d1ab](https://github.com/digital-tennis/digital-tennis-game/commit/4c79e023d1ab491f737da1dc43c43893b72832a6) |
+
+게임의 `manifest.json`과 Unity가 생성한 `packages-lock.json`은 위 protocol·AI·SDK 커밋을 함께 가리킨다. 펌웨어의 원격 C 프로토콜 참조와 SDK CI의 프로토콜 참조도 같은 protocol 커밋으로 갱신했다. 이 통합 소스에서 Unity Edit189/189·Play43통과/NullGPU1제외를 확인했다. 최초 실기 기록의 소스 해시를 새 해시로 덮어쓰지 않는다.
+
+## 30 병합 전 검토 배포판
 
 Game5203b381의 clean 소스로 Development/AllowDebugging을 끄고 Mac·Windows 빌드를 생성했다. native staging과 결과 디렉터리는 생성물을 새로 만들어 이전 게시물의 중복 파일을 제외한다. 자체/UPM·외부 라이선스, Mac deep/strict 서명, 두 ZIP의 CRC/SHA256을 확인했다. Mac은 로컬 ad-hoc 검토용이며 Windows는 교차 빌드다. 이 배포는 main·스토어·운영 서버 배포가 아니며 실물 본딩 성공을 의미하지 않는다. 큰 ZIP은 Git 밖 작업 전달 폴더에 보관한다.
 
