@@ -58,17 +58,25 @@
     "actualBleConnected": false,
     "actualBleRoundTrip": false,
     "physicalImuTested": false,
-    "runtimeErrors": 0
+    "runtimeErrors": 0,
+    "scope": "Ordinary game release uses only the Tennis service; its scan had no devices. Successful NU54 reference-service transport test is separate."
   },
   "hardware": {
     "usbBoard": "NU54DK_v2_Pre-release",
     "macBluetoothOn": true,
     "referenceScannerNearbyCount": 10,
-    "matchingAdvertisementFound": false,
-    "actualConnection": false,
-    "actualRxTxRoundTrip": false,
+    "matchingAdvertisementFound": true,
+    "actualConnection": true,
+    "actualRxTxRoundTrip": true,
     "flashedOrReset": false,
-    "remaining": "Existing firmware identity/pairing LED state and compatible advertisement required; external IMU attachment and accuracy deferred"
+    "remaining": "SMP/OS bonding, actual Tennis service/20-byte protocol and external IMU readiness/accuracy are separate and unverified.",
+    "initialMatchingAdvertisementFound": false,
+    "initialActualConnection": false,
+    "initialActualRxTxRoundTrip": false,
+    "osBondVerified": false,
+    "tennisControllerServiceVerified": false,
+    "externalImuTested": false,
+    "followupEvidence": "nu54-transport-validation.json"
   },
   "releaseArchives": [
     {

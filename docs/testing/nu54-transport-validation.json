@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-18",
+  "humanObservedLedPattern": "All LEDs blink twice together after long-press SW3; matches P_PAIRING in the reference source",
+  "advertisement": {
+    "name": "NU54-HW-",
+    "serviceUuids": [
+      "6e753534-7061-7900-8000-00805f9b0001"
+    ],
+    "rssi": -51
+  },
+  "transport": {
+    "scope": "Existing NU54 reference firmware transport and read-only device.info only. No session.open/payment/provision/reset/flash/sensor test. OS bonding not inferred from connection.",
+    "referenceCommit": "ee12b7519336ed276060b83c69f4f863f557443a",
+    "discovered": true,
+    "connected": true,
+    "subscribed": true,
+    "writeWithResponse": true,
+    "applicationReply": true,
+    "osBondVerified": false,
+    "exchanges": [
+      {
+        "request": "device.info",
+        "replyType": "error",
+        "replyReason": "NOT_PERMITTED",
+        "fragments": 1,
+        "roundTripMs": 211.32
+      },
+      {
+        "request": "device.info",
+        "replyType": "error",
+        "replyReason": "NOT_PERMITTED",
+        "fragments": 1,
+        "roundTripMs": 209.66
+      }
+    ],
+    "name": "NU54-HW-Wallet",
+    "disconnectedCleanly": true
+  },
+  "pairingScope": "Pairing-mode advertisement and GATT connection are observed. SMP/OS bonding is not verified; device.info rejects current link as NOT_PERMITTED. No authentication was bypassed.",
+  "gameScope": "Reference UUID/CBOR profile only. This is not the Tennis controller UUID/20-byte firmware nor actual Unity sensor input.",
+  "notes": [
+    "Initial scans returned no match. Reopened pairing mode while an immediate connect-on-discovery probe was already waiting; reference device found. Root cause of earlier missing advertisements not established.",
+    "USB VCOM yielded no console bytes. Reference app uses logs and is not the CLI example, so ble info silence alone is not proof of broken firmware.",
+    "Request is canonical CBOR device.info with zero eight-byte session ID. Firmware ss_device_info is read-only; unbonded current link returns NOT_PERMITTED.",
+    "Two complete reply envelopes passed length/SHA256/CBOR version/session/type checks. RTT includes command fragment writes and application reply, not IMU latency.",
+    "Retained no wallet address, device UUID, PIN/passkey or raw wallet body. No session.open/payment/provision/reset/flash/IMU commands were sent."
+  ]
+}

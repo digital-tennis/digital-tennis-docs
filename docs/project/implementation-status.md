@@ -68,3 +68,7 @@ Unity EditMode150개·전체PlayMode35개, 전경 추가 뒤 메뉴4개, 서버2
 ## 컨트롤러 후속 PR
 
 main 기록과 이번 검토 브랜치를 구분한다. [컨트롤러 준비 상태](controller-readiness.md)는 센서 없는 LINK_PROBE/REPLY, 펌웨어 송신 큐·버튼·구간별 모션과 녹화 프로필, 게임 통신 확인 화면과 최신 배포판의 소스/검증을 기록한다. 기본 자동 세 동작과 선택 모드·합성8프로필 검사를 실제 사람8제스처 인식 성공으로 바꾸지 않는다. 외장 IMU 모델·배선·장착 축과 실제 정확도는 유예한다.
+
+### NU-54 실물 BLE 후속 확인
+
+SW3 전체 LED 두 번 점멸과 참고 서비스 광고를 확인하고, 실제 GATT 연결·Notify·WriteWithResponse·device.info 응답2회(211.32/209.66ms)를 검증했다. 현재 링크의 정보 조회는 NOT_PERMITTED로 거부됐으므로 SMP/OS 본딩 완료와 구분한다. 테니스용 UUID/20바이트·실제 Unity 센서 입력은 별도다. [정확한 근거와 경계](controller-readiness.md)를 따른다. 기존 펌웨어와 기기 저장 설정은 보존했다.

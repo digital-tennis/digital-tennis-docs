@@ -42,7 +42,15 @@ protocol → firmware/SDK → game → docs 순서로 검토한다. **스쿼시 
 
 사용자가 제공한 nu-54v-dk-toy/products의 ee12b7519336ed276060b83c69f4f863f557443a에서 ble_links.c/central.go의 연결 수명·구독/Notify 역압·bonding·직렬 WriteWithResponse 패턴을 검토했다. 결제·지갑·프로비저닝 기능을 가져오지 않았다. NU-54 참고 서비스/CBOR 또는 NUS와 테니스 서비스/20바이트는 다른 계약이다.
 
-USB의 NU54DK_v2_Pre-release와 켜진 Mac Bluetooth는 확인했다. 사용자 SW3 조작 뒤 원본 스캐너는 주변10기기를 보았지만 NU54/NUS/참고 서비스 광고를 찾지 못했고 USB 조회도 무응답이었다. **실물 BLE 연결·페어링·메시지 왕복은 미검증**이다. 기존 펌웨어 이름/LED 반응이 추가로 필요하며 덮어쓰기·초기화하지 않았다. Unity의 테니스 전용 검색0기기 결과도 참고 기기와 호환 연결에 성공했다는 뜻은 아니다. 외장 센서 정확도 검증은 계속 유예한다.
+초기에는 USB의 NU54DK_v2_Pre-release와 켜진 Mac Bluetooth만 확인됐고, 원본 검색의 주변10기기 중 참고 서비스는 없었다. 후속 동시 관찰에서는 SW3 직후 NU54-HW- 광고와 서비스6e753534-7061-7900-8000-00805f9b0001, RSSI -51dBm를 확인했다. 사용자가 본 전체 LED 두 번 점멸은 참고 코드 P_PAIRING과 일치한다. 앞선 미검출의 원인을 확정하지는 않는다. USB 콘솔은0바이트였으며 이 앱은 CLI 예제가 아니므로 ble info 무응답만으로 펌웨어 이상을 판단하지 않는다.
+
+### 2026-10-18 추가 실물 통신 성공
+
+광고를 발견하는 즉시 같은 프로그램에서 NU54-HW-Wallet에 연결해 서비스/특성을 찾고 TX Notify 구독 후 RX WriteWithResponse를 수행했다. 읽기 전용 device.info를 canonical CBOR·0의8바이트 sessionId·길이/SHA256 envelope로2회 전송했고 각각211.32ms/209.66ms에 완전한 응답을 받았다. 응답 길이·digest·CBOR 버전/session/type을 확인한 뒤 구독 종료·연결 해제까지 성공했다. 시간에는 명령 조각 쓰기와 앱 응답이 포함되며 센서 지연이 아니다.
+
+두 응답은 error/NOT_PERMITTED였다. 참고 firmware의 ss_device_info는 현재 연결에 bonded 권한이 없으면 이렇게 응답하며 저장 상태를 바꾸지 않는다. 이는 **실물 BLE 연결·양방향 애플리케이션 메시지 전달 성공**의 근거이고, 정보 조회 허용이나 **SMP/OS 본딩 완료**는 아니다. Mac Bluetooth 설정에서도 해당 기기의 본딩 완료는 확인하지 못했다. [실물 통신 결과](../testing/nu54-transport-validation.json)를 확인한다.
+
+기존 보드 펌웨어/설정·bond를 덮어쓰거나 초기화하지 않았다. session.open·결제·프로비저닝·센서 보정 명령도 보내지 않았다. 공개 결과에는 기기 UUID·지갑 주소·PIN/passkey·원시 응답을 남기지 않았다. **이번 시험은 참고 NU-54 서비스/CBOR 계약**이다. 테니스용 UUID/20바이트 송수신 및 Unity의 실제 컨트롤러 입력 성공으로 바꿔 표기하지 않는다. Unity의 테니스 전용 검색0기기 기록도 그대로 보존하며 외장 IMU 검증은 유예한다.
 
 ## Unity·일반 창 검증
 
@@ -65,4 +73,4 @@ CI의 protocol/firmware/SDK/server 및 game source 검사가 통과했다. GitHu
 
 ## 남은 장비·외부 결정
 
-실물 IMU 모델/배선/축·버튼 핀/극성·스윙 정확도·전파 지연/재연결/연속 사용, NU-54 광고/원래 계약 RX/TX, 물리 Windows 실행/BLE·서로 다른 두 PC/WAN은 남아 있다. GitBook 계정 게시·외부 서버/TURN 운영·BGM A/B·음성/자산 채택·밸런스 최종 승인은 팀 결정이며 소프트웨어 검수로 완료 처리하지 않는다.
+실물 IMU 모델/배선/축·버튼 핀/극성·스윙 정확도·전파 지연/재연결/연속 사용, SMP/OS 본딩과 실제 테니스 펌웨어 서비스/입력, 물리 Windows 실행/BLE·서로 다른 두 PC/WAN은 남아 있다. NU-54 참고 서비스의 광고/연결/기본 RX·TX는 위 추가 실기로 확인했다. GitBook 계정 게시·외부 서버/TURN 운영·BGM A/B·음성/자산 채택·밸런스 최종 승인은 팀 결정이며 소프트웨어 검수로 완료 처리하지 않는다.
