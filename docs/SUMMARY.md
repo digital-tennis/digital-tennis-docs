@@ -16,6 +16,8 @@
 ## 개발 일정과 작업
 
 * [초보 개발자의 작업 방법](guides/contributing.md)
+* [외장 IMU 후속 개발 인수](guides/imu-handoff.md)
+* [강화학습 AI와 검증 범위](project/learned-ai.md)
 * [12일 3인 WBS](planning/wbs.md)
 * [위험과 일정 조정](planning/risks.md)
 * [제품별 과제 안내](products/README.md)
