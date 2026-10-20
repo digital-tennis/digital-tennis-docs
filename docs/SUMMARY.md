@@ -18,6 +18,7 @@
 * [초보 개발자의 작업 방법](guides/contributing.md)
 * [외장 IMU 후속 개발 인수](guides/imu-handoff.md)
   * [Air Band 참고 IMU 적용·기록·재생](guides/imu-air-band.md)
+  * [테니스 모션 추론·가상 IMU 실험실](guides/imu-tennis-simulator.md)
 * [강화학습 AI와 검증 범위](project/learned-ai.md)
 * [12일 3인 WBS](planning/wbs.md)
 * [위험과 일정 조정](planning/risks.md)
