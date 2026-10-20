@@ -1,5 +1,6 @@
 # Digital Tennis Docs
 
+현재 상태와 남은 작업은 [현재 작업 목록](docs/project/current-backlog.md)과 [최신 소프트웨어 검증·배포](docs/project/software-followup.md)에서 확인하세요.
 **게임·컨트롤러·온라인 서비스를 함께 만드는 개발 문서.** 제품 구조부터 구현 과제, 인터페이스 계약과 검증 기준까지 한곳에서 찾을 수 있습니다.
 
 [문서 시작](docs/README.md) · [시스템 구조](docs/project/architecture.md) · [제품별 과제](docs/products/README.md) · [전체 목차](docs/SUMMARY.md) · [물리 컨트롤러 v3](docs/project/physical-controller-events.md)
