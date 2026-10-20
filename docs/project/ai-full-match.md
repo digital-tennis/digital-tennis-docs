@@ -36,3 +36,15 @@ main merge 없이 feature PR로 전달한다. 승인 후 AI squash merge SHA로 
 - [Game draft #30](https://github.com/digital-tennis/digital-tennis-game/pull/30): 실제 Unity 원시 증거·재개 actor·Mac 자동 검증.
 
 모두 feature 브랜치이며 merge하지 않는다. game의 delivery.json이 최종 published/tested SHA와 CI 상태를 구분한다.
+
+## 검증 명령과 미완료 처리
+
+게임 저장소의 `python3 tools/verify-ai-full-match.py --phase`에
+`baseline`, `training`, `self-play`, `resume`, `runtime`, `delivery`를 순서대로 지정한다.
+처음 네 단계는 원시 경기 기록과 실제 모델·optimizer·설정·과거 소스를 재감사한다.
+기준 평가의 원래 verifier/model 바이트는 측정 당시 해시와 일치하는 보관본으로 검증한다.
+
+일반 Mac 창 확인이 남아 있으면 runtime/delivery는 종료 코드3으로 검수 대기를 보고한다.
+자동 검사·증거 무결성 감사의 성공과 전체 완료를 구분한다. 실제 일반 창 검수를 마치면
+완료 필드와 증거를 갱신하여 정상 완료를 검증할 수 있다. 현재는 잠금 해제 대기이며,
+과거 학습 결과를 덮어쓰거나 자동 실행을 일반 창 확인으로 바꾸지 않는다.
