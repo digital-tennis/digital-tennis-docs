@@ -89,3 +89,7 @@ inputSeq와 tick은 uint32이며 wrap 비교는 `delta=(new-old) mod 2^32`, `0<d
 ## 2026-10-18 병합 전 검증의 실제 실행
 
 같은 Mac의 실제 Unity 두 프로세스에서 직접 P2P 전체86포인트·7–6/6–0·2–0세트, 서버 게임 중계0을 확인했습니다. 별도 경기에서는 실제 채널을 닫아 `p2p:1 → relay:2`, 그다음 WebSocket을 끊어 `relay:3`으로 재접속하고 전체 경기와 같은 방의 양측 재경기 첫 포인트[1,0]까지 일치했습니다. 이 결과를 실제 Windows/두PC/WAN 검사로 대신 표시하지 않습니다. [소프트웨어 확장 증거](../project/software-completion.md)를 확인하세요.
+
+## 물리 컨트롤러 중립 입력 확장
+
+온라인v1 input.payload.kind는 기존 샷에 더해 `controllerPrimary`, `motionHorizontalPositive`, `motionHorizontalNegative`, `motionOverheadDown`, `motionShortRotation`, `motionObliqueDown`, `motionObliqueUp`을 허용한다. 게스트는 중립 종류와 정규화 입력을 전송하고, 서버는 현역할/epoch/범위만 검사한다. 호스트가 실제 경기상태에서 테니스 의미를 결정한다. 기존 matchId/rallyId/shotId/eventId·순번·수명 검증을 유지한다. 새 게임보다 서버를 먼저 갱신해야 하며 구형 서버는 새 kind를 거부한다.

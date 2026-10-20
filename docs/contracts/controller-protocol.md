@@ -4,11 +4,11 @@
 
 | 항목 | 값 |
 | --- | --- |
-| 문서 ID / 개정 | DT-ICD-23-10-00 / R05 |
-| 발행 / 상태 | 2026-10-19 / PR 검토본 |
+| 문서 ID / 개정 | DT-ICD-23-10-00 / R06 |
+| 발행 / 상태 | 2026-10-20 / v3 검토본 |
 | 책임 / 소비 제품 | protocol / firmware, ble-unity, game |
 | 적용성 | 실제 제품 NU40-DK+별도 외장 IMU. NU-54는 임시 센서 없는 BLE/본딩 실기 타깃 |
-| wire 호환 | 이벤트 v1/v2=20바이트. 보안 읽기 값은 별도 schema1=4바이트 |
+| wire 호환 | 이벤트 v1/v2/v3=20바이트. 보안 읽기 값은 별도 schema1=4바이트 |
 | 기준 | 코드·벡터·소비 Git SHA를 함께 고정. 스쿼시 병합 후 참조 SHA 재고정 |
 
 이 문서는 ATA iSpec2200의 문서 관리·계층 번호·적용성·개정/검증 추적 방식에서 영감을 받은 **프로젝트 자체 ICD**다. 아래 DT 번호는 항공기 ATA 공식 챕터가 아니다. 유료 iSpec 원문/SGML DTD를 복제하지 않았고 iSpec2200 준수 인증이나 SGML 교환 호환을 주장하지 않는다. [ATA 공식 범위](https://ataebiz.org/standards/).
@@ -17,7 +17,8 @@
 
 | 유효 절 | 제목 | 개정 |
 | --- | --- | --- |
-| 10 | 책임·데이터 흐름 | R04 |
+| 05 | 현재 v3와 레거시 적용성 | R06 |
+| 10 | 책임·데이터 흐름 | R06 |
 | 20 | GATT·본딩 | R04 |
 | 30 | 이벤트 wire 배치 | R05 |
 | 40 | 명령·상태 절차 | R04 |
@@ -25,15 +26,31 @@
 | 50 | 순번·오류·수명 | R05 |
 | 60 | 검증·장애 격리 | R04 |
 
-R01=v1 기본3샷. R02=v2의4~8 명시적 의도. R03=센서 없는 LINK_PROBE/REPLY. R04=암호화/영속 본딩 읽기와 제품 경계 명확화. R05=v2 버튼 게임 의도4~7과 LINK_REPLY 입력 프로필0/1. 본딩 읽기는 기존20바이트에 예약 비트를 임의로 끼워 넣지 않는 별도 특성이다.
+R01=v1 기본3샷. R02=v2의4~8 명시적 의도. R03=센서 없는 LINK_PROBE/REPLY. R04=암호화/영속 본딩 읽기와 제품 경계 명확화. R05=v2 버튼 게임 의도4~7과 LINK_REPLY 입력 프로필0/1. R06=v3 물리6종/버튼Down·Up과 프로필2/3, 게임 문맥 분리. 본딩 읽기는 기존20바이트에 예약 비트를 임의로 끼워 넣지 않는 별도 특성이다.
+
+## 05 현재 기본 v3와 호환 적용성
+
+새 제품은 **[물리 컨트롤러 v3 설계](../project/physical-controller-events.md)**를 사용한다. 정본은 [protocol v3 ICD](https://github.com/digital-tennis/digital-tennis-protocol/blob/c8a94c4bb62d9c07f293537e087e0e664c306f4d/spec/controller-v3.md)이며 다음 표가 R06 변경이다. 아래의 v1/v2 샷·버튼 ID 표는 구형 기기 호환을 위해 남긴다.
+
+| v3 계약 | 값/절차 |
+| --- | --- |
+| type | MOTION4, BUTTON_DOWN5, BUTTON_UP6 |
+| motion kind | 횡회전+1/−2, 위→아래3, 짧은회전4, 대각하강5/상승6 |
+| button kind | 물리 번호1..5. Down/Up power·각도0 |
+| profile | PhysicalMotion2 / PhysicalButtons3 |
+| 협상 | v2 LINK_PROBE → v3 LINK_REPLY.kind2/3, 나머지 nonce/현재연결/보안gate 동일 |
+| 경기 문맥 | firmware/SDK에 없음. game 호스트가 해석 |
+| 호환 | v1/v2 ID 유지. 새SDK는 양쪽지원, 구SDK는 v3거부 |
+
+공유 벡터는 [73개](../testing/protocol-vectors.json)이며 버전별 오류를 포함한다. 정본 변경 시 C/C#·소비 제품을 함께 갱신한다. raw6축을 기존20바이트에 덮어쓰지 않는다.
 
 ## 10 설명과 작동 원리
 
 `외장 IMU → firmware(샘플/보정/구간/액션) → protocol 코덱 → BLE → ble-unity(검증/중복제거/PC시각) → game 입력 adapter → 타격/경기 규칙`.
 
-- DT-REQ-001: firmware는 센서 드라이버·장착 축·보정·샘플 주기·기본 액션 판정을 소유해야 한다.
+- DT-REQ-001: firmware는 센서 드라이버·장착 축·보정·샘플 주기·물리 패턴 판정을 소유해야 한다.
 - DT-REQ-002: protocol은 GATT/필드/단위/버전/정상·오류 벡터만 소유해야 한다. BLE OS 호출이나 모션 분류를 하지 않는다.
-- DT-REQ-003: SDK는 OS 연결/페어링, 현재 연결의 보안 확인, wire 검증/중복 제거와 입력 의도를 소유해야 한다. 센서 샘플을 다시 분류하지 않는다.
+- DT-REQ-003: SDK는 OS 연결/페어링, 현재 연결의 보안 확인, wire 검증/중복 제거와 중립 입력 전달을 소유해야 한다. 센서 샘플을 다시 분류하지 않는다.
 - DT-REQ-004: game은 플레이어/온라인 권한·샷의 유효 거리/시점·물리·점수·스킬을 결정한다. 보드에는 Near/Far나 점수가 없다.
 
 기본 경로는 **펌웨어 판정 이벤트**다. 향후 원시 샘플을 PC에서 연구할 수 있지만 현재 wire에 원시6축 데이터를 임의로 삽입하지 않는다. 원시 스트림 프로필을 추가하려면 새 명세·벡터·시계/누락 정책이 먼저 필요하다. 제품은 HID 마우스나 OS 커서 입력을 사칭하지 않는 사용자 정의 GATT 라켓이다.
@@ -109,7 +126,7 @@ DT-REQ-006: native helper는 보안 schema가 없거나 잘못된 기기를 호�
 | 130 LINK_PROBE | v2만, nonce1..65535, kind/flags/time/power/각도0, battery255 |
 | 131 LINK_REPLY | v2만, 요청 nonce, 실제 flags/기기시각, kind=0 IMU/1 버튼 모드, power/각도0 |
 
-CRC poly0x07/init0/refin=false/refout=false/xorout0. ASCII123456789=0xF4. 범위 내라도 v1은 v2 전용 의도를 수용하지 않는다. v3이상은 거부한다.8개 wire 의도 지원은 사람8제스처의 정확도를 뜻하지 않는다.
+CRC poly0x07/init0/refin=false/refout=false/xorout0. ASCII123456789=0xF4. 범위 내라도 v1은 v2 전용 의도를 수용하지 않는다. v1/v2 레거시 계약은 v3 전용 type을 수용하지 않는다. 새 v3는 위 R06 계약을 따르며 v4 이상은 거부한다.8개 wire 의도 지원은 사람8제스처의 정확도를 뜻하지 않는다.
 
 ## 40 명령·센서 상태
 

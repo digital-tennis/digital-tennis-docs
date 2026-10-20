@@ -1,5 +1,7 @@
 # 외장 IMU 펌웨어 개발 과제
 
+> 후속 변경: [물리 이벤트 v3와 책임 분리](../project/physical-controller-events.md)를 우선합니다. 초기 과제의 샷 분류·v1/v2 표는 최초 계획이며, 새 제품에서 펌웨어는6종 물리 패턴/버튼edge, 게임은 서브/스매시 등을 소유합니다.
+
 저장소: [digital-tennis-firmware](https://github.com/digital-tennis/digital-tennis-firmware)  
 초기 담당 역할: A
 
