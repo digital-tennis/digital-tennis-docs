@@ -2,7 +2,7 @@
 
 2026-10-20 기준. 제품은 **NU40-DK + 별도 부착 외장 IMU**이며, 최초12일·3명·36PD 계획을 유지합니다. 현재 사용자는 IMU를 보유하지 않으므로 실제 센서 검증은 후속 담당자가 수행합니다. NU54의 BLE/버튼 검증은 센서 인식 증거가 아닙니다.
 
-[펌웨어의 상세 개발 인수 가이드](https://github.com/digital-tennis/digital-tennis-firmware/blob/754bcbcbed94ba9d542fef39e5187b8dba820af1/docs/imu-developer-handoff.md)에 배선 확인표, 함수별 수정 위치, 과제 입력/출력과 완료 기준을 정리했습니다. [Air Band 참고 적용과 기록·재생 안내](imu-air-band.md)는 새 가속도 피크 처리 경로를 설명합니다. 실물 센서를 연결한 결과와 합성 입력 결과를 구분합니다.
+[펌웨어의 상세 개발 인수 가이드](https://github.com/digital-tennis/digital-tennis-firmware/blob/46881a8e0610b9439d77785f06186e1f77e3535b/docs/imu-developer-handoff.md)에 배선 확인표, 함수별 수정 위치, 과제 입력/출력과 완료 기준을 정리했습니다. [Air Band 참고 적용과 기록·재생 안내](imu-air-band.md)는 새 가속도 피크 처리 경로를 설명합니다. 실물 센서를 연결한 결과와 합성 입력 결과를 구분합니다.
 
 ## 책임과 수정 순서
 

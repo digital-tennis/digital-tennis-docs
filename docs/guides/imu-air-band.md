@@ -42,7 +42,7 @@ python3 tools/imu-trace-to-csv.py uart.log samples.csv
 .work/host/imu_replay samples.csv > events.csv
 ```
 
-[상세 코드·모델별 ODR/범위·빌드 명령](https://github.com/digital-tennis/digital-tennis-firmware/blob/754bcbcbed94ba9d542fef39e5187b8dba820af1/docs/air-band-imu-adaptation.md)에서 정확한 수정 위치를 확인합니다. 임계값은 펌웨어 config에 빌드 시 주입하며 runtime CSV/원격 설정을 제공하는 것은 아닙니다. 게임 CSV는 그 이후의 경기 효과를 설정합니다.
+[상세 코드·모델별 ODR/범위·빌드 명령](https://github.com/digital-tennis/digital-tennis-firmware/blob/46881a8e0610b9439d77785f06186e1f77e3535b/docs/air-band-imu-adaptation.md)에서 정확한 수정 위치를 확인합니다. 임계값은 펌웨어 config에 빌드 시 주입하며 runtime CSV/원격 설정을 제공하는 것은 아닙니다. 게임 CSV는 그 이후의 경기 효과를 설정합니다.
 
 ## 검증과 남은 한계
 

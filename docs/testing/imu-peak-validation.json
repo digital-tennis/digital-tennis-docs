@@ -155,5 +155,5 @@
     "toolchain": "ccc010f809 / GNU 14.3.0",
     "sensorFinalBuild": "pristine; avoids NCS generated Kconfig quote warnings during reconfigure"
   },
-  "firmwareCommit": "754bcbcbed94ba9d542fef39e5187b8dba820af1"
+  "firmwareCommit": "46881a8e0610b9439d77785f06186e1f77e3535b"
 }
