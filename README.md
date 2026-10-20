@@ -77,3 +77,5 @@ python3 tools/check_docs.py
 ## 라이선스
 
 직접 작성한 코드·문서는 [Apache-2.0](LICENSE)입니다. [NOTICE](NOTICE)를 포함하며, 외부 자료·자산의 원래 조건은 [외부 고지](THIRD_PARTY_NOTICES.md)를 따릅니다.
+
+2026-10-21 확장의 현재 상태는 [전체 경기 AI 결과·계약·남은 검수](docs/project/ai-full-match.md)를 확인하세요. 실제 self-play/재개를 실행했으며 새 모델의 Mac 일반 창 검수는 미완료입니다.

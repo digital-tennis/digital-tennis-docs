@@ -24,6 +24,7 @@
   * [테니스 모션 추론·가상 IMU 실험실](guides/imu-tennis-simulator.md)
   * [실험으로 선택한 모션 임계값](guides/imu-thresholds.md)
 * [강화학습 AI와 검증 범위](project/learned-ai.md)
+* [전체 경기 AI 실행 결과와 잔여 검수](project/ai-full-match.md)
 * [12일 3인 WBS](planning/wbs.md)
 * [위험과 일정 조정](planning/risks.md)
 * [제품별 과제 안내](products/README.md)
@@ -39,6 +40,7 @@
 
 * [컨트롤러 통신 규격 v1/v2/v3](contracts/controller-protocol.md)
 * [온라인 통신 규격 v1](contracts/online-protocol.md)
+* [전체 경기 AI 학습 계약](contracts/ai-full-match.md)
 * [통합 수용 테스트](testing/acceptance.md)
 
 ## 문서 공개와 제출
