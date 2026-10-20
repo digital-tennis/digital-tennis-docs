@@ -1,5 +1,6 @@
 # Digital Tennis 개발 문서
 
+현재 상태와 남은 작업은 [현재 작업 목록](project/current-backlog.md)과 [최신 소프트웨어 검증·배포](project/software-followup.md)에서 확인하세요.
 Digital Tennis는 키보드와 BLE 모션 라켓으로 즐기는 Unity PC 테니스 프로젝트입니다. 이 문서는 게임·펌웨어·통신·AI·온라인 서비스가 어떻게 연결되는지, 무엇을 구현하고 어떻게 확인할지 안내합니다.
 
 ## 먼저 무엇을 보고 싶나요?
@@ -33,7 +34,7 @@ Digital Tennis는 키보드와 BLE 모션 라켓으로 즐기는 Unity PC 테니
 
 ## 문서 읽기 기준
 
-- 규격의 필드·단위·절차는 해당 계약 문서를 따릅니다. 컨트롤러 바이트 형식의 정본은 [protocol 규격](https://github.com/digital-tennis/digital-tennis-protocol/blob/main/spec/controller-v2.md)입니다.
+- 규격의 필드·단위·절차는 해당 계약 문서를 따릅니다. 컨트롤러 바이트 형식의 정본은 [protocol 규격](https://github.com/digital-tennis/digital-tennis-protocol/blob/main/spec/controller-v3.md)입니다.
 - 날짜·커밋을 명시한 검증 문서는 그 실행 시점의 근거입니다. 실제 성공, 모의 검사, 교차 빌드, 미검증을 구분합니다.
 - 최초 계획·과제·이력은 보존합니다. 현재 실행 방법은 각 제품의 루트 README를 우선합니다.
 

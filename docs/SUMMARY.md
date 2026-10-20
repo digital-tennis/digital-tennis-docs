@@ -2,6 +2,8 @@
 
 ## 프로젝트 이해
 
+* [현재 작업·완료·외부 검증](project/current-backlog.md)
+* [소프트웨어 후속 검증·배포 결과](project/software-followup.md)
 * [문서 시작 안내](README.md)
 * [현재 구현과 검증 범위](project/implementation-status.md)
 * [장비 없이 진행하는 소프트웨어 확장](project/software-completion.md)
