@@ -985,5 +985,8 @@
     "Ordinary board app retains fast peak profile; learned CSV applies to explicit full-window gesture profile",
     "Latency is from synthetic acceleration peak to decision, not CPU time or total BLE/Unity delay"
   ],
-  "firmwareFeatureCommit": "8229b4806669edf9c4445af86224b97ff0b6a73c"
+  "firmwareFeatureCommit": "42761360b71d409089fcde9a0b23d569a2decd20",
+  "reviewedFirmwareCommit": "8229b4806669edf9c4445af86224b97ff0b6a73c",
+  "firmwareMergedCommit": "42761360b71d409089fcde9a0b23d569a2decd20",
+  "firmwarePullRequest": 6
 }

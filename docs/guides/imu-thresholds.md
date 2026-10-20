@@ -2,7 +2,7 @@
 
 R01 / 2026-10-20. NU40-DK+별도 외장 IMU용 C 실험 프로필의 임계값을 가상 센서 자료에서 선택한다. NU54 센서 없는 버튼 프로필과 보드의 기존 빠른 peak 기본값은 유지한다. 실제 센서/사람의 정확도나 전체 무선 지연 검증은 아니다.
 
-아래 명령과 코드 경로는 [펌웨어 고정 소스](https://github.com/digital-tennis/digital-tennis-firmware/tree/8229b4806669edf9c4445af86224b97ff0b6a73c)의 저장소 루트를 기준으로 합니다. [펌웨어 상세 문서](https://github.com/digital-tennis/digital-tennis-firmware/blob/8229b4806669edf9c4445af86224b97ff0b6a73c/docs/threshold-experiment.md)와 같은 결과를 제공합니다.
+아래 명령과 코드 경로는 [펌웨어 고정 소스](https://github.com/digital-tennis/digital-tennis-firmware/tree/42761360b71d409089fcde9a0b23d569a2decd20)의 저장소 루트를 기준으로 합니다. [펌웨어 상세 문서](https://github.com/digital-tennis/digital-tennis-firmware/blob/42761360b71d409089fcde9a0b23d569a2decd20/docs/threshold-experiment.md)와 같은 결과를 제공합니다.
 
 ## 패턴과 수치의 역할
 
@@ -44,7 +44,7 @@ R01 / 2026-10-20. NU40-DK+별도 외장 IMU용 C 실험 프로필의 임계값�
 | 슬라이스 | -0.83..-0.526 | 0.539..0.865 | 55.473..110.148 | 180..400 | 1.181 |
 | 로브 | 0.527..0.831 | 0.538..0.864 | 57.685..111.46 | 190..420 | 1.285 |
 
-방향은 각도 단위가 아닌 정규화된 특징값이다. 포핸드는 Z 양수, 백핸드는 Z 음수이며 나머지 signed Z 범위와 coherence는 [최종 규칙 CSV](https://github.com/digital-tennis/digital-tennis-firmware/blob/8229b4806669edf9c4445af86224b97ff0b6a73c/config/gesture-rules.csv)에 있다. 서브/스매시는 같은 범위를 공유하고 경기 상태로 구분한다. 표의 g는 중력을 포함한 센서 크기다. 추정 공 충격이나 실제 근력의 단위가 아니다.
+방향은 각도 단위가 아닌 정규화된 특징값이다. 포핸드는 Z 양수, 백핸드는 Z 음수이며 나머지 signed Z 범위와 coherence는 [최종 규칙 CSV](https://github.com/digital-tennis/digital-tennis-firmware/blob/42761360b71d409089fcde9a0b23d569a2decd20/config/gesture-rules.csv)에 있다. 서브/스매시는 같은 범위를 공유하고 경기 상태로 구분한다. 표의 g는 중력을 포함한 센서 크기다. 추정 공 충격이나 실제 근력의 단위가 아니다.
 
 | 기대 액션 | 이전 코드 / 100 | 선택한 코드 / 100 |
 | --- | --- | --- |
