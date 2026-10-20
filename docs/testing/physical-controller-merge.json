@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-20",
+  "scope": "Squash merge and dependency-pin integration; no firmware flash, physical button or IMU test",
+  "mergedMainCommits": {
+    "protocol": "2bb3f0e80a9280458ccfe087201504a4613994e7",
+    "firmware": "bb84445bc6b71b159b44b07e667f1c50059a9514",
+    "sdk": "a0e705ef037ed554ce2c0dba33676784ea06c588",
+    "server": "7525c2bf7010f0ad89e98b5b6a9ebe589a09f95b",
+    "game": "b28a668e4b7c86ff5d0709c44311ef68a0d983b4"
+  },
+  "sameTreeAsVerifiedPrHead": true,
+  "packagePins": {
+    "protocol": "2bb3f0e80a9280458ccfe087201504a4613994e7",
+    "controller": "a0e705ef037ed554ce2c0dba33676784ea06c588"
+  },
+  "unity": {
+    "check": "passed",
+    "controllerTests": {
+      "id": "2",
+      "testcasecount": "3",
+      "result": "Passed",
+      "total": "3",
+      "passed": "3",
+      "failed": "0",
+      "inconclusive": "0",
+      "skipped": "0",
+      "asserts": "0",
+      "engine-version": "3.5.0.0",
+      "clr-version": "4.0.30319.42000",
+      "start-time": "2026-10-20 11:48:33Z",
+      "end-time": "2026-10-20 11:48:55Z",
+      "duration": "22.4001135"
+    },
+    "xmlSha256": "c3bb44c88fcc6f5dbac17e4d0a0b9b736594e7a812d97fc4314a6e32394b6fa6"
+  },
+  "originalEvidence": "physical-controller-integration.json retains the actual earlier code/build hashes"
+}

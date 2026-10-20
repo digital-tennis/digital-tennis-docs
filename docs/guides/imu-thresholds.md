@@ -1,5 +1,7 @@
 # DT-HW-31-23-00 · 실험으로 선택한 모션 임계값
 
+> 현재 계약은 [물리 이벤트 v3](../project/physical-controller-events.md)입니다. 아래의 피크 기본·7종 샷·보드 경기context 설명은 이전 커밋의 기록입니다. 새 보드 기본은 물리6종이고 게임이 테니스 의미를 결정합니다.
+
 R01 / 2026-10-20. NU40-DK+별도 외장 IMU용 C 실험 프로필의 임계값을 가상 센서 자료에서 선택한다. NU54 센서 없는 버튼 프로필과 보드의 기존 빠른 peak 기본값은 유지한다. 실제 센서/사람의 정확도나 전체 무선 지연 검증은 아니다.
 
 아래 명령과 코드 경로는 [펌웨어 고정 소스](https://github.com/digital-tennis/digital-tennis-firmware/tree/42761360b71d409089fcde9a0b23d569a2decd20)의 저장소 루트를 기준으로 합니다. [펌웨어 상세 문서](https://github.com/digital-tennis/digital-tennis-firmware/blob/42761360b71d409089fcde9a0b23d569a2decd20/docs/threshold-experiment.md)와 같은 결과를 제공합니다.

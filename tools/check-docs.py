@@ -31,6 +31,6 @@ if effort!=collections.Counter({'A':12,'B':12,'C':12}):fail('Original developer 
 tasks={match for page in (docs/'products').glob('digital-tennis-*.md') for match in re.findall(r'^## ((?:FW|PR|BL|GM|AI|MS|DC)-\d+)',page.read_text(),re.M)}
 if len(tasks)!=37 or {x['task'] for x in items}-tasks:fail('Missing original beginner assignment')
 vectors=json.loads((docs/'testing/protocol-vectors.json').read_text())
-if vectors.get('supported_wire_versions')!=[1,2]:fail('Current controller version vectors missing')
+if vectors.get('wire_versions')!=[1,2,3]:fail('Current controller version vectors missing')
 if errors:raise SystemExit('\n'.join(errors))
 print(json.dumps({'passed':True,'markdownPages':len(list(docs.rglob('*.md'))),'localLinks':links,'originalAssignments':len(tasks),'originalWbsSlots':len(items),'scope':'GitBook files/navigation and original planning integrity; actual account publication is separate'}))

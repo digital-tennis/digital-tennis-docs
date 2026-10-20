@@ -11,6 +11,7 @@
 * [프로젝트 목표와 완료 범위](project/overview.md)
 * [제품별 저장소와 책임](project/repositories.md)
 * [시스템 구조와 통합 순서](project/architecture.md)
+* [물리 컨트롤러 v3와 게임 액션 분리](project/physical-controller-events.md)
 * [처음 배우는 용어](guides/glossary.md)
 
 ## 개발 일정과 작업
@@ -34,7 +35,7 @@
 
 ## 통합 계약과 검증
 
-* [컨트롤러 통신 규격 v1/v2](contracts/controller-protocol.md)
+* [컨트롤러 통신 규격 v1/v2/v3](contracts/controller-protocol.md)
 * [온라인 통신 규격 v1](contracts/online-protocol.md)
 * [통합 수용 테스트](testing/acceptance.md)
 
