@@ -5,7 +5,7 @@
 | 항목 | 값 |
 | --- | --- |
 | 문서 ID / 개정 | DT-ICD-23-10-00 / R06 |
-| 발행 / 상태 | 2026-10-20 / v3 검토본 |
+| 발행 / 상태 | 2026-10-20 / v3 main 기준 |
 | 책임 / 소비 제품 | protocol / firmware, ble-unity, game |
 | 적용성 | 실제 제품 NU40-DK+별도 외장 IMU. NU-54는 임시 센서 없는 BLE/본딩 실기 타깃 |
 | wire 호환 | 이벤트 v1/v2/v3=20바이트. 보안 읽기 값은 별도 schema1=4바이트 |
@@ -30,7 +30,7 @@ R01=v1 기본3샷. R02=v2의4~8 명시적 의도. R03=센서 없는 LINK_PROBE/R
 
 ## 05 현재 기본 v3와 호환 적용성
 
-새 제품은 **[물리 컨트롤러 v3 설계](../project/physical-controller-events.md)**를 사용한다. 정본은 [protocol v3 ICD](https://github.com/digital-tennis/digital-tennis-protocol/blob/c8a94c4bb62d9c07f293537e087e0e664c306f4d/spec/controller-v3.md)이며 다음 표가 R06 변경이다. 아래의 v1/v2 샷·버튼 ID 표는 구형 기기 호환을 위해 남긴다.
+새 제품은 **[물리 컨트롤러 v3 설계](../project/physical-controller-events.md)**를 사용한다. 정본은 [protocol v3 ICD](https://github.com/digital-tennis/digital-tennis-protocol/blob/2bb3f0e80a9280458ccfe087201504a4613994e7/spec/controller-v3.md)이며 다음 표가 R06 변경이다. 아래의 v1/v2 샷·버튼 ID 표는 구형 기기 호환을 위해 남긴다.
 
 | v3 계약 | 값/절차 |
 | --- | --- |

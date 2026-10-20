@@ -62,7 +62,7 @@ PC의 CALIBRATE→연속정지→성공ACK+실제flags를 확인한다. 샘플 �
 
 ## 50 세 번째 과제: 물리 패턴 튜닝
 
-[가상 실험실](https://github.com/digital-tennis/digital-tennis-firmware/blob/e292235/simulator/README.md)의 두 위→아래 궤적은 모두kind3다. 같은 센서 파형을 경기 상태에 따라 다르게 라벨링하지 않는다. 물리6종과 정지·걷기·회전 없는 충격·손떨림 등 음성 표본을 사용자/세션별로 나누고 실측 CSV를 확보한다.
+[가상 실험실](https://github.com/digital-tennis/digital-tennis-firmware/blob/bb84445bc6b71b159b44b07e667f1c50059a9514/simulator/README.md)의 두 위→아래 궤적은 모두kind3다. 같은 센서 파형을 경기 상태에 따라 다르게 라벨링하지 않는다. 물리6종과 정지·걷기·회전 없는 충격·손떨림 등 음성 표본을 사용자/세션별로 나누고 실측 CSV를 확보한다.
 
 CSV 열은 `time_ms,ax_mps2,ay_mps2,az_mps2,gx_dps,gy_dps,gz_dps`다. 정답 label은 별도 메타데이터에 두며 C 입력에는 포함하지 않는다. UART trace는 [기록/재생](imu-air-band.md)을 따르고 누락을 임의 보간하지 않는다. `imu_replay --physical <csv>`로 같은 C 분류기를 실행한다. `dt_gesture_classify_ring`의특징과CSV 범위를 조정하고 미일치/겹침은 입력을 만들지 않게 한다. 세부 CLI는 인자 없이 실행한 `imu_replay`의 usage 또는 simulator/run.py를 확인한다.
 

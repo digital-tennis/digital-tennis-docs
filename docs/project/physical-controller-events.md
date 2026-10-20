@@ -2,7 +2,7 @@
 
 ## 00 문서 관리
 
-R01 / 2026-10-20 / 구현 검토본. NU40-DK+별도 외장 IMU가 제품이며 NU-54는 센서 없는 임시 버튼 시험 타깃이다. 원래12일·3명·36PD 계획을 보존한다. DT 번호는 자체 관리 형식이며 ATA iSpec2200 공식 적합성을 주장하지 않는다.
+R02 / 2026-10-20 / 스쿼시 병합 기준. NU40-DK+별도 외장 IMU가 제품이며 NU-54는 센서 없는 임시 버튼 시험 타깃이다. 원래12일·3명·36PD 계획을 보존한다. DT 번호는 자체 관리 형식이며 ATA iSpec2200 공식 적합성을 주장하지 않는다.
 
 ## 10 목적과 책임
 
@@ -74,19 +74,33 @@ SDK는 기존 v2 LINK_PROBE를 보내고 새 펌웨어는 v3 LINK_REPLY.kind=2(P
 ## 60 검토와 병합 순서
 
 1. [protocol PR4](https://github.com/digital-tennis/digital-tennis-protocol/pull/4): v3·프로필·C/C#·73공유벡터.
-2. [firmware PR7](https://github.com/digital-tennis/digital-tennis-firmware/pull/7)과 [ble-unity PR4](https://github.com/digital-tennis/digital-tennis-ble-unity/pull/4): protocol의 검토 커밋을 고정한다. 새 board default와 중립 DTO를 함께 지원한다.
+2. [firmware PR7](https://github.com/digital-tennis/digital-tennis-firmware/pull/7)과 [ble-unity PR4](https://github.com/digital-tennis/digital-tennis-ble-unity/pull/4): protocol의 병합 커밋을 고정했다. 새 board default와 중립 DTO를 함께 지원한다.
 3. [match-server PR7](https://github.com/digital-tennis/digital-tennis-match-server/pull/7): 중립 online kind를 허용한다. 새 게임보다 먼저 배포한다.
-4. [game PR28](https://github.com/digital-tennis/digital-tennis-game/pull/28): SDK·protocol을 검토 커밋에 고정하고 호스트 해석·설정·기존 입력을 검증한다.
-5. docs: 계약·과제·현황을 현행화한다. 승인 후 스쿼시 병합할 때 소비 패키지 SHA를 병합된 새 커밋으로 다시 고정한다.
+4. [game PR28](https://github.com/digital-tennis/digital-tennis-game/pull/28): SDK·protocol을 병합 커밋에 고정하고 Unity check·패킷 설정 검사3개로 다시 검증했다.
+5. docs: 계약·과제·현황을 현행화한다. 승인한 의존 PR을 스쿼시 병합하고 소비 패키지 SHA를 실제 병합 커밋으로 고정했다.
 
-이번 변경은 병합하지 않고 PR 검토 상태로 제출한다. 보드 flash·추가 버튼 조작·실물 IMU 인식률·Windows/WAN 실기는 후속 작업이다.
+2026-10-20 사용자 승인에 따라 의존성 순서로 스쿼시 병합했다. 보드 flash·추가 버튼 조작·실물 IMU 인식률·Windows/WAN 실기는 후속 작업이다.
 
 ![중립 물리 이벤트를 확인한 가상 실험실](../assets/physical-motion-lab.png)
 
-소스 기준: protocol `c8a94c4`, firmware `e292235`, SDK `66ed4a1`, match-server `4849c01`, game `49a6353`. Unity의 패키지는 protocol/SDK 전체40자리 SHA로 고정한다.
+기능 구현·검증 당시 소스: protocol `c8a94c4`, firmware `e292235`, SDK `66ed4a1`, match-server `4849c01`, game `49a6353`. Unity의 패키지는 protocol/SDK 전체40자리 SHA로 고정한다.
 
 ## 70 Unity와 온라인 통합 결과
 
 [통합 증거](../testing/physical-controller-integration.json)에 XML·소스·실행 파일·C 패킷 해시를 남겼습니다. Unity EditMode202개, PlayMode46개가 통과했고 전체 PlayMode에서 제외한 포인터1개는 별도 GPU 검사로 통과했습니다. 최종 HUD/보정 안내 보완 후 실제 패킷 설정 검사와 GPU 메뉴 검사를 다시 통과하고 Mac 실행 파일을 빌드했습니다.
 
 같은 Mac의 두 실행 파일은 중립 입력을 릴레이하여86포인트·최대6회 랠리·2–0세트(7–6,6–0), 타이브레이크8–6을 일치시켰습니다. 호스트 로컬 중립 입력55개, 게스트 중립 입력42개를 확인했고 게스트 물리tick0, 프로토콜/런타임 오류0입니다. 온라인 코드 커밋은49a6353이며 HUD/보정 문구만 추가한 Mac 빌드는44e40dd입니다. 사람의 실제 IMU 동작이나 두 PC/WAN 검증은 아닙니다.
+
+## 80 현재 main과 패키지 참조
+
+| 저장소 | 스쿼시 병합 커밋 |
+| --- | --- |
+| protocol | `2bb3f0e80a9280458ccfe087201504a4613994e7` |
+| firmware | `bb84445bc6b71b159b44b07e667f1c50059a9514` |
+| ble-unity | `a0e705ef037ed554ce2c0dba33676784ea06c588` |
+| match-server | `7525c2bf7010f0ad89e98b5b6a9ebe589a09f95b` |
+| game | `b28a668e4b7c86ff5d0709c44311ef68a0d983b4` |
+
+펌웨어의 CMake와 SDK의 CI는 protocol 병합 커밋을 참조한다. 게임의 manifest와 Unity lock은 protocol·SDK 병합 커밋을 참조하며 Unity가 실제 패키지를 해석한 check와 컨트롤러 설정 검사3개가 통과했다. 이전 실험/실행 보고서의 소스 해시는 당시 기록으로 보존한다. 새 flash·IMU 실기를 수행한 것은 아니다.
+
+병합 후 참조와 Unity 재검사 기록은 [통합 기록](../testing/physical-controller-merge.json)에 남겼다. 병합 전의 전체 검증 데이터는 원래 소스 해시를 그대로 유지한다.
