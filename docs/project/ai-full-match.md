@@ -28,14 +28,14 @@ AI는 독립 정책/학습/체크포인트를 소유하고, game이 ordinary inp
 
 전체 목표는 **일반 Mac 창 검수가 남아 있어 미완료**다. 잠금을 우회하지 않는다. 해제 후 game `python3 tools/run-ai-runtime-mac.py`를 실행하고 실제 창을 관찰한 뒤에만 `record-ai-runtime.py --window-inspected`와 기본 `verify-ai-runtime.py`를 실행한다. 이번 작업에서 완료했다고 표시하지 않는다. 새 실행은 기존 batch 증거와 구분해 보존한다.
 
-main merge 없이 feature PR로 전달한다. 승인 후 AI squash merge SHA로 game을 다시 pin하고 Unity package resolve/check/runtime 검사를 다시 수행해야 한다. 원 feature SHA의 시험 결과를 새 코드 변경의 시험으로 주장하지 않는다.
+최초 결과는 feature PR로 전달했다. 사용자 승인으로 AI #7이 스쿼시 병합되었으며 game은 최종 커밋 `acfacc6a6f5096e74e3eedb8da42d2e41eb6704e`로 다시 pin한다. package resolve/check/runtime 재검사를 병합 과정에서 수행한다. 원 feature SHA의 시험 결과를 새 코드 변경의 시험으로 주장하지 않는다.
 
-## 검토 중인 PR
+## 관련 PR
 
-- [AI draft #7](https://github.com/digital-tennis/digital-tennis-ai/pull/7): 독립 actor·PPO·동결 상대·complete checkpoint.
-- [Game draft #30](https://github.com/digital-tennis/digital-tennis-game/pull/30): 실제 Unity 원시 증거·재개 actor·Mac 자동 검증.
+- [AI #7](https://github.com/digital-tennis/digital-tennis-ai/pull/7): 독립 actor·PPO·동결 상대·complete checkpoint.
+- [Game #30](https://github.com/digital-tennis/digital-tennis-game/pull/30): 실제 Unity 원시 증거·재개 actor·Mac 자동 검증.
 
-모두 feature 브랜치이며 merge하지 않는다. game의 delivery.json이 최종 published/tested SHA와 CI 상태를 구분한다.
+각 링크에서 실제 병합 커밋과 상태를 확인한다. game의 delivery.json은 최초 전달 시점의 published/tested SHA와 CI 상태를 보존하며, 일반 창 미검수 상태도 유지한다.
 
 ## 검증 명령과 미완료 처리
 
