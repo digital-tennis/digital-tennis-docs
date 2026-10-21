@@ -44,7 +44,7 @@ R01 / 2026-10-20. 최초12일·3명·36PD와 **NU40-DK + 별도 외장 IMU** 요
 
 현재 PPO는 코스·깊이6액션을 선택하고 기존 실행 계층이 이동·서브·타격타이밍·스킬을 처리한다. 샷 배치 보상은 승률이 아니다. 실제 Unity의 짧은 고정 대진 포인트 점유율도 사람 승률이 아니다. 난이도 순서가 기대와 다르면 그대로 기록하고 추가 사람 평가 없이 자동으로 계수를 맞추지 않는다.
 
-전체 경기의 score/done/reset을 포함한 학습 환경, 장기전술/자기대전·이동/서브/스킬 학습과 체크포인트 재개는 후속 확장으로 분리한다. [현재 학습 범위](learned-ai.md)와 AI 저장소의 `Training/README.md`가 기준이다.
+2026-10-21 feature에서 실제 전체 경기 score/done/reset 학습·동결 self-play·complete-state trainer 재개를 실행했다. [측정 결과](ai-full-match.md)와 [계약](../contracts/ai-full-match.md)을 참조한다. 새 모델의 Mac 일반 창 검수는 시스템 잠금으로 미완료이며 main에 합치지 않았다. 이동/서브/타이밍/스킬은 결정적 실행기이며 해당 motor action의 직접 학습은 이번 성과로 주장하지 않는다. [현재 학습 범위](learned-ai.md)와 AI 저장소의 `Training/README.md`가 기준이다.
 
 ## 50 이전 문서 읽기
 

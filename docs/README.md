@@ -43,3 +43,5 @@ Digital Tennis는 키보드와 BLE 모션 라켓으로 즐기는 Unity PC 테니
 ## 후속 개발 인수
 
 [외장 IMU를 가진 개발자의 수정·검증 순서](guides/imu-handoff.md)와 [강화학습 AI의 실제 학습/실행 범위](project/learned-ai.md)를 확인하세요.
+
+2026-10-21 확장의 현재 상태는 [전체 경기 AI 결과·계약·남은 검수](project/ai-full-match.md)를 확인하세요. 실제 self-play/재개를 실행했으며 새 모델의 Mac 일반 창 검수는 미완료입니다.

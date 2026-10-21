@@ -44,3 +44,5 @@
 | digital-tennis-game | [#27](https://github.com/digital-tennis/digital-tennis-game/pull/27) | [9c4767a5c7f6](https://github.com/digital-tennis/digital-tennis-game/commit/9c4767a5c7f69d2df7302bd9c2f948d84cc664ff) |
 
 새 소비 참조로 AI main28검사와 Unity 프로젝트 검사·Edit191검사를 다시 통과했다. AI Runtime과 번들 actor는 기존 실기 검수 소스와 동일하다. 이번 병합 작업에서 IMU나 추가 보드 버튼 검증을 수행하지 않았다.
+
+2026-10-21 확장의 현재 상태는 [전체 경기 AI 결과·계약·남은 검수](ai-full-match.md)를 확인하세요. 실제 self-play/재개를 실행했으며 새 모델의 Mac 일반 창 검수는 미완료입니다.
